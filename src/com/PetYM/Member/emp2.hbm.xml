@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<!-- 	被hibernate.cfg讀取Java物件與資料庫表格的映射檔 ，結婚證書 、映射兩個檔案-->
+    <class name="com.PetYM.Member.Member" table="Member" >
+        
+        <id name="memNo" column="memNo">
+            <generator class="sequence" >
+              <param name="sequence">MEMNO_SQ</param>
+            </generator>  
+<!--             <generator class="identity"/> -->
+        </id>
+        
+        <property name="memId" column="memId" />
+        <property name="memPwd" column="memPwd" />
+        <property name="memName" column="memName" />
+        <property name="memSname" column="memSname" />
+        <property name="memIdNo" column="memIdNo" />
+        <property name="memPhone" column="memPhone" />
+        <property name="memAddress" column="memAddress" />
+        <property name="memEmail" column="memEmail" />
+        <property name="memImg" column="memImg" />
+        <property name="memReported" column="memReported" />
+        <property name="memStatus" column="memStatus" />
+        <property name="memRelation" column="memRelation" />
+        <property name="memSelfintro" column="memSelfintro" />
+        <property name="memFollowed" column="memFollowed" />
+        <property name="memPoint" column="memPoint" />
+        <property name="memSaleRank" column="memSaleRank" />
+        <property name="memLongtitude" column="memLongtitude" />
+        <property name="memLatitude" column="memLatitude" />
+        <property name="memLocTime" column="memLocTime" />
+        <property name="memLocStatus" column="memLocStatus" />
+      
+        
+    </class>
+</hibernate-mapping>

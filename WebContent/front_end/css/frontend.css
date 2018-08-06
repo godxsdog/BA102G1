@@ -1,0 +1,22 @@
+body {
+background-image:url('../images/bg.png');
+}
+
+.frontend{
+background-image:url('../images/bg.png');	
+}
+
+.list-color{
+	background-color:#505e51;
+	color:white;
+}
+
+
+.img-bg{
+	opacity:1;
+	background-color:#ccc;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-top:4rem;
+}

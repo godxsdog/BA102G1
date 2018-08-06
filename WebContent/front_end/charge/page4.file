@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="MS950"%>
+<%request.setCharacterEncoding("UTF-8");%>  
+<%response.setCharacterEncoding("UTF-8");%>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Ãdª« You & Me</title>
+    <link href="<%=request.getContextPath()%>/front_end/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/front_end/css/nav.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/front_end/css/colorplan.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<%=request.getContextPath()%>/front_end/css/modern-business.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/front_end/css/product.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="<%=request.getContextPath()%>/front_end/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/front_end/css/frontend.css" rel="stylesheet" type="text/css">
+    

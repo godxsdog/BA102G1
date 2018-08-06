@@ -1,0 +1,33 @@
+
+
+@font-face {
+    font-family: seto;
+    src: url(../fonts/setofont.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+#nav{
+	font-family: 'seto' ;
+}
+
+#nav a {
+    color: #EEE;
+/*     font-family: Microsoft JhengHei; */
+font-family: 'seto' ;
+    font-size: 18px !important;
+}
+
+#nav a:hover {
+    color: black;
+    background-color: #acf9e6 !important;
+    text-decoration: underline;
+}
+
+#searchgroup{
+ margin-right:1em;
+}
+
+.spancontent{
+	color:black;
+}

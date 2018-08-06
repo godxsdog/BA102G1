@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Chris</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>loginFilter</filter-name>
+    <filter-class>com.filters.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <url-pattern>/front_end/member/memberInfo.jsp</url-pattern>
+    <url-pattern>/front_end/charge/chargePage.jsp</url-pattern>
+    <url-pattern>/front_end/product/OrderView.jsp</url-pattern>
+    <url-pattern>/front_end/activityFront/activityOfMine.jsp</url-pattern>
+    <url-pattern>/front_end/diary/mydiary.jsp</url-pattern>
+	<url-pattern>/front_end/diary/manageSubMem.jsp</url-pattern>
+	<url-pattern>/front_end/letter/index_letter.jsp</url-pattern>
+	<url-pattern>/front_end/letter/index_notRead.jsp</url-pattern>
+	<url-pattern>/front_end/dateitem/list_seller_future.jsp</url-pattern>
+	<url-pattern>/front_end/dateitem/list_buyer_future.jsp</url-pattern>
+	<url-pattern>/front_end/letter/index_tagLetter.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+    <dispatcher>ASYNC</dispatcher>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>PutMap</servlet-name>
+    <servlet-class>com.context.PutMap</servlet-class>
+    <load-on-startup>10</load-on-startup>
+  </servlet>
+  
+  
+ 
+ 
+ 
+ <servlet>
+    <servlet-name>RestMemberServlet</servlet-name>
+    <servlet-class>com.restMember.controller.RestMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestMemberServlet</servlet-name>
+    <url-pattern>/restMember/restMemberController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RestaurantServlet</servlet-name>
+    <servlet-class>com.restaurant.controller.RestaurantServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestaurantServlet</servlet-name>
+    <url-pattern>/restaurant/restaurantController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ActivityServlet</servlet-name>
+    <servlet-class>com.activity.controller.ActivityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivityServlet</servlet-name>
+    <url-pattern>/activity/activityController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DBGifReader5</servlet-name>
+    <servlet-class>com.activity.controller.ActImgReader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DBGifReader5</servlet-name>
+    <url-pattern>/activity/DBGifReader5</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ActDetialServlet</servlet-name>
+    <servlet-class>com.actDetial.controller.ActDetialServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActDetialServlet</servlet-name>
+    <url-pattern>/actDetial/actDetialController</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>FilterForRestMember</filter-name>
+    <filter-class>another.FilterForRestMember</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterForRestMember</filter-name>
+    <url-pattern>/front_end/restMember/restMemberManagement.jsp</url-pattern>
+    <url-pattern>/front_end/restMember/restMember.jsp</url-pattern>
+    <url-pattern>/front_end/restMember/restMemberChangePsw.jsp</url-pattern>
+    <url-pattern>/front_end/activity/newActivity.jsp</url-pattern>
+    <url-pattern>/front_end/activity/activityManagent.jsp</url-pattern>
+  </filter-mapping>
+  
+ 
+ 
+ 
+ 
+ 
+ 	<servlet>
+		<servlet-name>Board</servlet-name>
+		<servlet-class>com.dateitem.model.Board</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Board</servlet-name>
+		<url-pattern>/front_end/dateitem/board.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DateItemServlet</servlet-name>
+		<servlet-class>com.dateitem.controller.DateItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DateItemServlet</servlet-name>
+		<url-pattern>/front_end/dateitem/dateitem.do</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>DateItemImgReader</servlet-name>
+		<servlet-class>com.imgreader.ImgReader</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DateItemImgReader</servlet-name>
+		<url-pattern>/front_end/dateitem/ImgReader</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DateItemImgReader</servlet-name>
+		<url-pattern>/back_end/apprec/ImgReader</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DateItemAppServlet</servlet-name>
+		<servlet-class>com.dateitemapp.controller.DateItemAppServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DateItemAppServlet</servlet-name>
+		<url-pattern>/back_end/apprec/dateitemapp.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DateItemRepServlet</servlet-name>
+		<servlet-class>com.dateitemrep.controller.DateItemRepServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DateItemRepServlet</servlet-name>
+		<url-pattern>/back_end/apprec/dateitemrep.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LetterServlet</servlet-name>
+		<servlet-class>com.letter.controller.LetterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LetterServlet</servlet-name>
+		<url-pattern>/front_end/letter/letter.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LetterTypeServlet</servlet-name>
+		<servlet-class>com.lettertype.controller.LetterTypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LetterTypeServlet</servlet-name>
+		<url-pattern>/back_end/letter/letterType.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DiaMsgServlet</servlet-name>
+		<servlet-class>com.diamsg.controller.DiaMsgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaMsgServlet</servlet-name>
+		<url-pattern>/front_end/diary/diaMsg.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SubMemServlet</servlet-name>
+		<servlet-class>com.submem.controller.SubMemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubMemServlet</servlet-name>
+		<url-pattern>/front_end/diary/subMem.do</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>DiaryServlet</servlet-name>
+		<servlet-class>com.diary.controller.DiaryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiaryServlet</servlet-name>
+		<url-pattern>/front_end/diary/diary.do</url-pattern>
+	</servlet-mapping>
+  
+  	<servlet>
+    	<servlet-name>ShowImage</servlet-name>
+    	<servlet-class>com.diary.controller.ShowImage</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>ShowImage</servlet-name>
+    	<url-pattern>/front_end/diary/ShowImage</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>ShowDiaVideo</servlet-name>
+    	<servlet-class>com.diary.controller.ShowVideo</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>ShowDiaVideo</servlet-name>
+    	<url-pattern>/front_end/diary/DiaryVideo</url-pattern>
+  	</servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+ <servlet>
+    <servlet-name>ShoppingCar</servlet-name>
+    <servlet-class>com.product.controller.ShoppingCar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCar</servlet-name>
+    <url-pattern>/ShoppingCar.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShoppingDetail</servlet-name>
+    <servlet-class>com.product.controller.ShoppingDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingDetail</servlet-name>
+    <url-pattern>/ShoppingDetail.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CheckOut</servlet-name>
+    <servlet-class>com.product.controller.CheckOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckOut</servlet-name>
+    <url-pattern>/CheckOut.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OrderView</servlet-name>
+    <servlet-class>com.order.controller.OrderView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderView</servlet-name>
+    <url-pattern>/OrderView.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+    <servlet>
+		<servlet-name>FaqServlet</servlet-name>
+		<servlet-class>com.faq.controller.FaqServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FaqServlet</servlet-name>
+		<url-pattern>/back_end/faq/faq.do</url-pattern>
+	</servlet-mapping>
+  
+  
+  
+</web-app>

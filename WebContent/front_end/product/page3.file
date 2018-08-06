@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="MS950"%>
+<%request.setCharacterEncoding("UTF-8");%>  
+<%response.setCharacterEncoding("UTF-8");%> 
+<div>
+                <div class="text-center">
+                   
+                    <br>
+                    
+                </div>
+                <div class="postion-left-group-b">
+                    <footer>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <p>Copyright 寵物You&amp;Me 2017</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <p>關於我們</p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>

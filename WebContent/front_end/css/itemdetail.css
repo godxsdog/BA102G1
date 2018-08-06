@@ -1,0 +1,60 @@
+
+.highlight  {
+    width: 100%;
+    color: white;
+    background: #F9735B;
+    border-radius: 10px;
+    padding: 3%;
+    
+	}
+
+	
+.keepcolor{
+	background: #FFF;
+}
+    
+.highlight img {
+    float: left;
+    width: 200px;
+    }
+    
+.highlight ul {
+    margin-left: 1%;
+    float: left; 
+    clear: right
+    }
+
+.highlight .a{
+	margin-left: 1%;
+    float: right;
+}
+    
+.highlight button {
+   margin-left: 1%;
+    float: right;
+    }
+    
+
+.check{
+	margin-left: 1%;
+    float: right;	
+}
+
+
+.highlight h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 2%;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.41);
+    font-size:20px;
+    text-align : center;
+    text-transform: uppercase;
+    }
+    
+.highlight p {
+    text-align: justify;
+    }
+
+
+/*     .modal-content-color */
+/*     { */
+/*       background-color:#F9735B;; */
+/*     } */

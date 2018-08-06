@@ -1,0 +1,36 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>	
+	
+    <link href="<%=request.getContextPath() %>/front_end/css/bootstrap.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/front_end/css/restEndNav.css" rel="stylesheet">
+   
+    <link href="<%=request.getContextPath() %>/front_end/css/colorplan.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<%=request.getContextPath() %>/front_end/css/modern-business.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="<%=request.getContextPath() %>/front_end/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath() %>/front_end/css/restend.css" rel="stylesheet">
+    <script src="<%=request.getContextPath() %>/front_end/js/jquery.datetimepicker.full.min.js"></script>
+	<link href="<%=request.getContextPath() %>/front_end/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css">
+	<script src="<%=request.getContextPath() %>/front_end/js/bootstrap.js"></script>
+	<script src="<%=request.getContextPath() %>/front_end/js/jquery.js"></script>
+    <link href="<%=request.getContextPath() %>/front_end/css/modern-business.css" rel="stylesheet" type="text/css">
+    <div class="col-xs-12 col-sm-2 postion-left-group">
+    			<div style="margin-top:0px;">
+				<img src="<%=request.getContextPath()%>/front_end/images/logo-sp.png" class="img-rounded img-bg try-color">
+				</div> 
+             	<div id="menu">
+                  	<div class="panel list-group list-color">
+
+						
+                        <a href="<%=request.getContextPath()%>/front_end/activity/activityManagent.jsp" class="list-group-item">管理我的活動</a>
+
+                        <a href="<%=request.getContextPath()%>/front_end/activity/newActivity.jsp" class="list-group-item">發起活動</a>
+                        
+                        <a href="<%=request.getContextPath()%>/front_end/restMember/restMemberManagement.jsp" class="list-group-item">管理餐廳資料</a>
+                        
+                        <a href="<%=request.getContextPath()%>/front_end/restMember/restMemberChangePsw.jsp" class="list-group-item">更改密碼</a>
+                    </div>
+                </div>
+            </div>
+    
+    

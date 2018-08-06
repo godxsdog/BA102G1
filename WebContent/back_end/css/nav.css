@@ -1,0 +1,63 @@
+
+a{
+  text-decoration:none;
+  color:#000;
+}
+
+
+@font-face {
+    font-family: seto;
+    src: url(../fonts/setofont.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bakcendlogin{
+	font-family: 'seto' ;
+}
+
+#fixedbutton-talk {
+  position: fixed;
+  bottom: 3%;
+  right: 5%;
+}
+
+.logo{
+  float:left;
+  color:#000;
+  font-weight:600;
+  margin-right:15px;
+  margin-left:20px;
+  padding-right:30px; 
+  font-size:140%; 
+  font-family: 'seto' ;
+} 
+#emerald-nav{
+  background-color:#F18C79;
+  background:#f4e2bc;
+  font-size:130%;
+  font-family: 'seto' ; 
+
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+    font-size:70%; 
+}
+
+.btn-fg{
+    background-color: #81D8D0;
+    display: block;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#login{
+    font-size:60%;
+        margin:0;
+}
+
+

@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="MS950"%>
+<%request.setCharacterEncoding("UTF-8");%>  
+<%response.setCharacterEncoding("UTF-8");%> 
+<div class="row">
+<table border="0" align="center">    
+ <tr>
+  <%if (rowsPerPage<rowNumber) {%>
+    <%if(pageIndex>=rowsPerPage){%>
+        
+        <td><A href="<%=request.getRequestURI()%>?whichPage=<%=whichPage-1%>"><input type="button" class="btn btn-primary" value="上一頁"></A>&nbsp;</td>
+    <%}%>
+  
+    <%if(pageIndex<pageIndexArray[pageNumber-1]){%>
+        <td><A href="<%=request.getRequestURI()%>?whichPage=<%=whichPage+1%>"><input type="button" class="btn btn-primary" value="下一頁"></A>&nbsp;</td>
+        
+    <%}%>
+  <%}%>  
+ </tr>
+</table> 				  
+</div>

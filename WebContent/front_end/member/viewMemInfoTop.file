@@ -1,0 +1,59 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>
+
+
+							<div class="row">
+									
+									<div class="col-md-3 col-lg-3">
+										<img alt="使用者頭貼" id="memImg"
+											src="<%=request.getContextPath()%>/front_end/member/MemImgReader2.do?memNo=${memberV.memNo}"
+											height="250px" width="250px" class="img-responsive"> 
+									</div>
+									
+						
+									<div class=" col-md-9 col-lg-9 ">
+											<table class="table table-user-information">
+												<tbody>
+													<tr>
+														<td class="title"><font size="5">${memberV.memSname}<font></td>
+													</tr>
+													<tr>
+														<td class="title">性別</td>
+														<%
+															String memGender = String.valueOf(memberV.getMemGender());
+															HashMap mGender = (HashMap) application.getAttribute("mGender");
+														%>
+														<td><%=mGender.get(memGender)%></td>
+													</tr>
+													<tr>
+
+														<td class="title">感情</td>
+														<%
+															String memRelation = String.valueOf(memberV.getMemRelation());
+															HashMap mRelation = (HashMap) application.getAttribute("mRelation");
+														%>
+														<td><%=mRelation.get(memRelation)%></td>
+													</tr>
+													<tr>
+														<td class="title">粉絲</td>
+														<td>${memberV.memFollowed}人</td>
+													</tr>
+													<tr>
+														<td class="title">關於我</td>
+														<td>${memberV.memSelfintro}</td>
+													</tr>
+													<tr>
+													<td colspan="2">
+													<a  href="<%=request.getContextPath() %>/front_end/member/viewMemDiary.jsp?memNo=<%=memNo %>"> <button  class="btn btn-default">日誌</button></a>
+													<a  href="<%=request.getContextPath() %>/front_end/member/viewMemAlbum.jsp?memNo=<%=memNo %>"> <button class="btn btn-default">相簿</button></a> 
+													<c:if test="${not empty list}"> 
+															<a href="<%=request.getContextPath() %>/front_end/member/viewMemPets.jsp?memNo=<%=memNo %>"> <button  class="btn btn-default">寵物</button></a>
+													<!-- 	<a> <button  class="btn btn-default">約會商品</button></a>        -->
+													</c:if>
+													</td>
+													</tr>
+												</tbody>
+											</table>
+
+										</div>
+
+								</div>

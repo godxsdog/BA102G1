@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>
+
+<jsp:useBean id="ltrtpSvc" scope="page" class="com.lettertype.model.LetterTypeService"/>
+
+            <div class="col-xs-12 col-sm-2 postion-left-group" data-spy="affix">
+            	<div class="frontend"><img src="<%=request.getContextPath()%>/front_end/images/logo-sp.png" class="img-rounded img-bg try-color"> </div>
+                <div id="menu">
+                    <div class="panel list-group list-color" >
+                        <a href="<%=request.getContextPath()%>/front_end/letter/index_letter.jsp" class="list-group-item">收信匣</a>
+                        <a href="<%=request.getContextPath()%>/front_end/letter/index_tagLetter.jsp" class="list-group-item">選取標註</a>                        	                  
+                        <a href="<%=request.getContextPath()%>/front_end/letter/index_notRead.jsp" class="list-group-item">未讀取信</a>
+                    </div>
+                </div>
+            </div>
+
+

@@ -1,0 +1,26 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+
+<style type="text/css">
+	.actarea{
+		height:100px;
+		width:300px;
+	}
+	
+	
+   
+    
+	
+	
+	
+	.overflow{
+		
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+	}
+	#actInitImg{
+		margin-top:10px;
+	}
+	
+</style>

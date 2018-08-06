@@ -1,0 +1,1055 @@
+Drop Table Albumimg;
+Drop Table Album;
+drop table ORDERLIST;
+drop table ord;
+Drop Table Product;
+drop table CHARGES;
+Drop Table Withdraw;
+drop table msg;
+Drop Table Dateitemrep;
+Drop Table Dateitemapp;
+drop table dateitem;
+DROP TABLE APPREPREC;
+drop table pet;
+DROP TABLE ACTDETIAL ;
+DROP TABLE ACTIMG ;
+DROP TABLE ACTIVITY ;
+DROP TABLE RESTIMG ;
+Drop Table Restmember ;
+DROP TABLE REST ;
+DROP TABLE DIAMSG;
+Drop Table Diary;
+Drop Table Letter;
+Drop Table Lettertype;
+DROP TABLE SUBMEM;
+drop table member;
+
+
+DROP TABLE USERQUESTION;
+DROP TABLE FAQ;
+DROP TABLE NEWS;
+DROP TABLE SLIDE;
+DROP TABLE AD;
+Drop table empauth;
+Drop Table Auth;
+DROP TABLE EMP;
+
+
+
+drop sequence PETNO_SQ;
+drop sequence MEMNO_SQ;
+DROP SEQUENCE EMPNO_SQ;
+DROP SEQUENCE ALBUMNO_SQ;
+DROP SEQUENCE ALBUMIMG_SQ;
+Drop Sequence AuthNO_Sq;
+drop sequence ORDNO_SQ;
+drop sequence PRODNO_SQ;
+drop sequence WITHDRAWNO_SQ;
+drop sequence CHARGENO_SQ;
+DROP SEQUENCE REST_SEQ;
+DROP SEQUENCE RESTIMG_SEQ;
+DROP SEQUENCE ACTIVITY_SEQ;
+DROP SEQUENCE ACTIMG_SEQ;
+DROP SEQUENCE ACTDETIAL_SEQ;
+DROP SEQUENCE AD_SQ;
+DROP SEQUENCE FAQ_SQ;
+DROP SEQUENCE NEWS_SQ;
+DROP SEQUENCE SLIDE_SQ;
+Drop Sequence Userquestion_Sq;
+DROP SEQUENCE DIAMSG_SEQ;
+DROP SEQUENCE DIARY_SEQ;
+Drop Sequence Letter_Seq;
+DROP SEQUENCE LETTERTYPE_SEQ;
+drop sequence msgno_SQ;
+drop sequence DATEITEMNO_SQ;
+DROP SEQUENCE DATEITEMAPP_SEQ;
+DROP SEQUENCE DATEITEMREP_SEQ;
+
+
+
+CREATE TABLE Member 
+(memNo   NUMBER(10) Constraint MEMBER_MEMNO_Pk Primary Key,
+memId  VARCHAR2(100) NOT NULL CONSTRAINT MEMBER_MEMID_UK UNIQUE,
+memPwd VARCHAR2(100) NOT NULL,
+memName VARCHAR2(100) NOT NULL,
+memSname VARCHAR(100) NOT NULL,
+memGender NUMBER(2) NOT NULL,
+memIdNo VARCHAR2(15) NOT NULL,
+memBday DATE NOT NULL,
+memPhone VARCHAR2(20) NOT NULL,
+memAddress VARCHAR2(200) NOT NULL,
+memEmail VARCHAR2(200) NOT NULL CONSTRAINT MEMBER_MEMEMAIL_UK UNIQUE,
+memImg BLOB NOT NULL,
+memReported NUMBER(4) NOT NULL,
+memStatus NUMBER(2) NOT NULL,
+memRelation NUMBER(2) NOT NULL,
+memSelfintro VARCHAR2(2000),
+memFollowed NUMBER(10) NOT NULL,
+memPoint NUMBER(10) NOT NULL,
+memSaleRank NUMBER(10),
+memLongtitude NUMBER(9,6),
+memLatitude NUMBER(9,6),
+memLocTime DATE,
+memLocStatus NUMBER(2) NOT NULL
+);
+
+
+
+Create Sequence MEMNO_SQ Increment By 1 Start With 5001 Nocache Nocycle;
+
+　
+
+
+    INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym','p123456','吳柔天','小天',1,'M134129471',TO_DATE('2000-11-17','YYYY-MM-DD'),'0930160401','新北市，萬里區，秀山路52巷19號3樓','chqweriwersqwe@gmail.com'
+,EMPTY_BLOB(),10,0,0,'你好我叫小天，今年21歲，興趣是打程式寫java，其他還有彈鋼琴，希望能在這個網站交到更多朋友，大家一起來愛護我的寵物吧。',60,1000,234,121.6739,24.91571,TO_DATE('20170710 18:30:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym2','p123456','李鑑堂','小堂',0,'M134129471',TO_DATE('1991-11-17','YYYY-MM-DD'),'0930160401','高雄市，新興區，新民路24巷15號','chritsqwe@gmail.com'
+,EMPTY_BLOB(),10,0,0,'你好我叫小堂，我曾在安心田心理諮商所工作過，興趣是打籃球健身寫程式，只不過就算再忙，我還是依舊疼愛我的狗狗。',2000,2000,1,120.666,23.01087,TO_DATE('20170816 18:30:20','YYYYMMDD HH24:MI:SS'),0);
+
+    INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym3','p123456','陳其真','小真',1,'N186739319',TO_DATE('2000-06-20','YYYY-MM-DD'),'093662450','桃園市，中壢區，中大路28巷61號','cWEwerWEe@gmail.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小新，今年25歲，興趣是打電動，玩手遊，其他還有打籃球與彈鋼琴，希望能在這個網站交到更多朋友',0,100,100,120.9417,24.23321,TO_DATE('20170710 12:36:55','YYYYMMDD HH24:MI:SS'),0);
+
+    INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym4','p123456','蔡依林','小菜',0,'A106669415',TO_DATE('1980-06-20','YYYY-MM-DD'),'0954662405','臺北市，中正區，忠孝東路2巷10號','234wer23423@gmail.com'
+,EMPTY_BLOB(),12,0,1,'YoYo check it out，這是紅花會萬池王，我的興趣就是rap',60,6000,9,121.5598,25.09108,TO_DATE('20170710 17:50:20','YYYYMMDD HH24:MI:SS'),0);
+
+    INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym5','p123456','陽宗委','小委',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'095466245','新北市，三峽區，天王路5巷11號','KwewerKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'哈囉你好，我是小委，我的專長就是唱歌還有疼愛我的寵物，希望你也能跟我一起愛護我的寵物喔',99,1500,123,121.2168,24.93759,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym6','p123456','吳小於','大可愛',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954066245','新北市，萬里區，秀山路52巷19號3樓','KK324BOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我是大可愛，雖然我是男的，但大家都說我很可愛，所以我叫大可愛',99,1200,9,120.2513,23.1417,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym7','p123456','許麗珍','小天真',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954660245','高雄市，新興區，新民路24巷15號','KwerKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好，我的個性就是有點傻大姐，所以我朋友都叫我小天真，我只想快快樂樂的交朋友，希望能認識你。',99,7000,983,120.4818,23.99297,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym8','p123456','黃彬華','小滑',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954660245','桃園市，中壢區，中大路28巷61號','KtrhKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫曉華，目前正在資策會教書，我長超帥的女學生都拜倒在我的書本下，專長是安卓還有照顧寵物',99,6000,657,120.62,22.54951,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym9','p123456','黃麗娟','dudu',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954660245','臺北市，中正區，忠孝東路2巷10號','KKBrtyOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫dudu，我目前正在資策會當導師，我希望能在這個網站認識更多不一樣的好友',99,7100,983,121.3642,23.7869,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym10','p123456','吳停賓','小賓',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662045','新北市，萬里區，秀山路52巷19號3樓','KKqweBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小彬，目前正在資策會java班培訓，我現在的人生就是學城市跟陪我的寵物',99,1200,9,120.3897,23.75585,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym11','p123456','王慈慈','慈慈',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662045','高雄市，新興區，新民路24巷15號','asdKKqweBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小翔，目前正在資策會讀書，我超級厲害的，我是指我超會照顧寵物的',99,1200,9,120.9417,24.48927,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym12','p123456','吳東又','小又',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662405','桃園市，中壢區，中大路28巷61號','KfreKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小東，我超級強的，我會用java寫一對一視訊，如果你對java有興趣可以找我',99,1200,9,120.574,23.45889,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym13','p123456','俞文樂','小樂',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662145','臺北市，中正區，忠孝東路2巷10號','KqweKertBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小樂，我朋友都說我是個天生的開心果，對我來說我只要看到寵物就會忘記一切煩惱，希望能認識你帶給你我的歡樂。',99,1200,9,121.1257,23.7599,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym14','p123456','天文樂','小樂',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662245','新北市，三峽區，天王路5巷11號','KqweKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小樂，我叫小樂的原因就是因為我覺得夏天很樂，不是很想打自我介紹，就這樣吧 我們直接認識比較快',99,1200,9,121.1252,24.70328,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym15','p123456','阮金天','小天',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954663245','新北市，萬里區，秀山路52巷19號3樓','KertqwBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小天，我的興趣就是騎馬，所我才叫小馬，哈哈哈',99,1200,9,120.9876,23.83876,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym16','p123456','許祥智','小琉球',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954646245','高雄市，新興區，新民路24巷15號','K7iKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小琉球，對拉就是因為我住在小琉球，我會寫java，興趣就是寫程式',99,1200,9,121.7195,24.69295,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym17','p123456','梁育誠','誠興',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954636245','桃園市，中壢區，中大路28巷61號','KqweKBerwOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小誠，我在補習班教過書，我朋友都說我很正，哈哈開玩笑的',99,1200,321,120.9647,24.80395,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym18','p123456','黃致陽','小黃',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954664245','臺北市，中正區，忠孝東路2巷10號','KKBOqweX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小黃，因為我超會講黃色笑話，哈哈哈哈',99,1200,9,121.7081,25.10898,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym19','p123456','鄭穎宣','小宣',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954656245','新北市，三峽區，天王路5巷11號','KKBOsdfX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小宣，我天生就是工程師的料，最愛的就是打程式，碰到bug看看寵物就會解出來了',99,1200,9,121.3542,23.7569,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym20','p123456','徐文樂','小樂',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954686245','新北市，萬里區，秀山路52巷19號3樓','KdfgjytKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小樂，我超愛看NBA的，隨然今年騎士輸了，但沒關西還可以再東山再起的',99,6500,9,120.4473,23.7569,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym21','p123456','沈軒竹','小沈',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954663245','高雄市，新興區，新民路24巷15號','K1DFG23sdfKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,1,'你好我叫小沈，我就是聖粉拉，不解釋',66,1520,9,120.9876,23.47545,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym22','p123456','王毅鈞','阿君',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662245','桃園市，中壢區，中大路28巷61號','KKsdCGfkBOX@HOT.com'
+,EMPTY_BLOB(),12,0,2,'你好我叫阿君，我喜歡看電影，興趣是看電影，上班看電影，下班看電影，睡覺看電影',99,1200,9,118.3186,23.47545,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym23','p123456','李宗霖','小霖',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954664245','臺北市，中正區，忠孝東路2巷10號','KqweK234BOX@HOT.com'
+,EMPTY_BLOB(),12,0,2,'你好我叫小林，清大數學系畢業，作息總是日夜顛倒，擅長打CODE',99,8600,9,119.6151,24.43679,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym24','p123456','許湧起','小永',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954636245','新北市，三峽區，天王路5巷11號','KKasdWERBqweOX@HOT.com'
+,EMPTY_BLOB(),12,0,1,'你好我叫小永，對我就是小永，小永就是我',99,1200,9,119.6251,23.56548,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym25','p123456','高適勳','小高',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954661245','新北市，萬里區，秀山路52巷19號3樓','KasEdKBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小高，台南人，最愛打籃球，曾去過新加坡，想再這認識更多朋友',99,1200,9,121.150165,24.86955,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym26','p123456','許祐慈','小慈',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954636245','高雄市，新興區，新民路24巷15號','KKQEwerdfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小慈，別誤會我是男的，別想太多，我不會喜歡你的',99,1200,9,121.087987,24.949523,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym27','p123456','許上慈','小慈',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954466245','桃園市，中壢區，中大路28巷61號','KKwQEe452rdfgBRETOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫小慈，目前在中壢資策會當工讀生，我最喜歡用微笑跟別人打招呼了，',99,1200,9,121.319432,25.08425,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym28','p123456','許育誠','育誠',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662545','臺北市，中正區，忠孝東路2巷10號','KKRWERwer40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫大慈，我是那個在資策會工作的小慈他哥大慈拉',99,1960,9,121.444628,25.040432,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym29','p123456','吳慈真','天慈',1,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954626245','新北市，三峽區，天王路5巷11號','KKwQWASEer40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫天慈，我也不知道我喜歡什麼，說實話我什麼都不知道，我只知道我想認識你',99,1650,9,121.266022,24.91007,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym30','p123456','慈神','又慈',0,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954664245','新北市，萬里區，秀山路52巷19號3樓','KKwe324r40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫又慈，不錯吧，又慈這個名子不錯吧，認識一下當個朋友吧',99,8000,9,121.34246,24.918662,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+
+
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym31','p123456','李宗倫','阿倫',2,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954662245','新北市，三峽區，天王路5巷11號','K4Kw23423r40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫阿倫，我支持婚姻平權，別跟我講些五四三的，我就是想認識你',99,1200,9,121.27179,24.968855,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym32','p123456','阿琉球','求哥',2,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954466245','新北市，萬里區，秀山路52巷19號3樓','KWERKwer40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫求哥，因為超會打籃球的，來單挑阿',99,1200,9,121.30462,24.950446,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+INSERT INTO MEMBER VALUES (MEMNO_SQ.NEXTVAL,'petym33','p123456','黃楷章','楷章',2,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954661245','桃園市，中壢區，中大路28巷61號','KKYTUwer40dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫楷章，我超會寫安卓的，我打算寫個安卓版的寵物約會幹掉這個網站',99,1200,9,121.305181, 24.96616,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+
+
+INSERT INTO MEMBER VALUES (5100,'petym100','p123456','null','null',2,'U113595436',TO_DATE('1987-05-20','YYYY-MM-DD'),'0954646245','桃園市，中壢區，中大路28巷61號','KKYq13TU0dfgBOX@HOT.com'
+,EMPTY_BLOB(),12,0,0,'你好我叫楷章，我超會寫安卓的，我打算寫個安卓版的寵物約會幹掉這個網站',99,1200,9,121.3542,25.1288,TO_DATE('20170710 06:15:20','YYYYMMDD HH24:MI:SS'),0);
+
+
+
+
+
+
+CREATE TABLE PET(
+petNo NUMBER(10) Constraint PET_PETNO_Pk Primary Key,
+memNo NUMBER(10) NOT NULL CONSTRAINT PET_MEMNO_FK REFERENCES MEMBER(MEMNO),
+petName VARCHAR2(100) NOT NULL,
+petKind VARCHAR2(100) NOT NULL,
+petGender NUMBER(2) NOT NULL,
+petSpecies VARCHAR2(100),
+petIntro VARCHAR2(1000),
+petBday DATE,
+petImg BLOB NOT NULL,
+petStatus Number(2) NOT NULL);
+
+
+Create Sequence PETNO_SQ Increment By 1 Start With 1001 Nocache Nocycle;
+
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5001,'小王狗','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5001,'小王貓','貓',0,'黑貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5001,'小王鼠','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5002,'小阿狗','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5002,'小阿貓','貓',1,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5002,'小阿鼠','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5003,'小三狗','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5003,'小三貓','貓',0,'西伯利亞貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5003,'小三鼠','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5004,'小五狗','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5004,'小五貓','貓',0,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5004,'小五鼠','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5005,'小天狗','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5005,'小天貓','貓',1,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5005,'小天鼠','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);   
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5006,'小王6狗','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5006,'小王6貓','貓',0,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5006,'小王6鼠','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5007,'小阿7狗','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5007,'小阿7貓','貓',1,'西伯利亞貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5007,'小阿7鼠','其他',1,'貴賓狗','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5008,'小三8狗','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5008,'小三8貓','貓',0,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5008,'小三8鼠','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5009,'小四9狗','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5009,'小四9貓','貓',1,'美國短毛貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5009,'小四9鼠','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5010,'小五狗10','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5010,'小五貓10','貓',0,'美國短毛貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5010,'小五鼠10','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5011,'小阿狗11','狗',1,'貴賓狗11','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5011,'小阿貓11','貓',1,'黑貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5011,'小阿鼠11','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5012,'小三狗12','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5012,'小三貓12','貓',0,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5012,'小三鼠12','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5013,'小四狗13','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5013,'小四貓13','貓',1,'美國短毛貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5013,'小四鼠13','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5014,'小五狗14','狗',0,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5014,'小五貓14','貓',0,'波斯貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5014,'小五鼠14','其他',0,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5015,'小四狗15','狗',1,'貴賓狗','我是最可愛的小狗，雖然我是狗，但我不是單身狗',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5015,'小四貓15','貓',1,'美國短毛貓','我是最會freestytle的貓，我就是hipop貓',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+INSERT INTO PET VALUES (PETNO_SQ.NEXTVAL,5015,'小四鼠15','其他',1,'倉鼠','yoyoyo 我來自紅花會，this is紅花會pg one萬慈鼠',TO_DATE('2007-12-17','YYYY-MM-DD'),EMPTY_BLOB(),0);
+
+
+CREATE TABLE EMP(
+empNo NUMBER(10) Constraint EMP_EMPNO_Pk Primary Key,
+empName VARCHAR2(30) NOT NULL,
+empJob VARCHAR2(50) NOT NULL,
+empId VARCHAR2(50) NOT NULL CONSTRAINT EMP_EMPID_UK UNIQUE,
+empPwd VARCHAR2(1000) NOT NULL,
+empPwdSalt VARCHAR2(1000) NOT NULL,
+empStatus NUMBER(2) NOT NULL,
+empHireDate Date NOT NULL,
+empEmail VARCHAR2(100) NOT NULL
+);
+
+Create Sequence EMPNO_SQ  Increment By 1 Start With 6001 Nocache Nocycle;
+
+INSERT INTO EMP VALUES (EMPNO_SQ.NEXTVAL,'吳永志','總經理','petym1','0a04bc40cc87d5d9bb5f83c1f5c059ddcfbc324627d696e70ebdd8f905eacc46','b283af',0,TO_DATE('2005-10-17','YYYY-MM-DD'),'chrisyen8341@gmail.com');
+INSERT INTO EMP VALUES (EMPNO_SQ.NEXTVAL,'黃彬華','協理','petym2','0a04bc40cc87d5d9bb5f83c1f5c059ddcfbc324627d696e70ebdd8f905eacc46','b283af',0,TO_DATE('2007-12-17','YYYY-MM-DD'),'chrisyen8341@gmail.com');
+INSERT INTO EMP VALUES (EMPNO_SQ.NEXTVAL,'李宗霖','專員','petym3','0a04bc40cc87d5d9bb5f83c1f5c059ddcfbc324627d696e70ebdd8f905eacc46','b283af',0,TO_DATE('2005-10-17','YYYY-MM-DD'),'chrisyen8341@gmail.com');
+INSERT INTO EMP VALUES (EMPNO_SQ.NEXTVAL,'王阿鈞','協理','petym4','0a04bc40cc87d5d9bb5f83c1f5c059ddcfbc324627d696e70ebdd8f905eacc46','b283af',0,TO_DATE('2007-05-17','YYYY-MM-DD'),'QWdqwcasd@IIw.com');
+INSERT INTO EMP VALUES (EMPNO_SQ.NEXTVAL,'梁育誠','工讀生','petym5','0a04bc40cc87d5d9bb5f83c1f5c059ddcfbc324627d696e70ebdd8f905eacc46','b283af',0,TO_DATE('2002-09-17','YYYY-MM-DD'),'cawerasd@qQWEdqw.com');
+
+Create Table Auth(
+AuthNo Number(10) Constraint Auth_Authno_Pk Primary Key,
+AuthName VARCHAR2(100)); 
+
+Create Sequence AuthNO_Sq Increment By 1 Start With 4001 Nocache Nocycle;
+
+Insert Into Auth Values(AuthNo_Sq.Nextval,'前端看板管理');
+Insert Into Auth Values(AuthNo_Sq.Nextval,'會員帳號管理');
+Insert Into Auth Values(AuthNo_Sq.Nextval,'商城管理');
+Insert Into Auth Values(AuthNo_Sq.Nextval,'檢舉申訴管理');
+Insert Into Auth Values(AuthNo_Sq.Nextval,'權限管理');
+insert into auth values(AuthNo_sq.nextval,'活動管理');
+insert into auth values(AuthNo_sq.nextval,'餐廳管理');
+insert into auth values(AuthNo_sq.nextval,'站內信管理');
+
+
+Create Table Empauth(
+Empno Number(10),
+Authno Number(10),
+Constraint Empauth_Pk Primary Key(Empno,Authno),
+Constraint Auth_Empno_Fk Foreign Key(Empno) References Emp(Empno), 
+constraint Auth_authno_Fk foreign key(AuthNo) references auth(authno)
+);
+
+Insert Into Empauth Values(6001,4001);
+Insert Into Empauth Values(6001,4002);
+Insert Into Empauth Values(6001,4003);
+Insert Into Empauth Values(6001,4004);
+Insert Into Empauth Values(6001,4005);
+Insert Into Empauth Values(6001,4006);
+Insert Into Empauth Values(6001,4007);
+Insert Into Empauth Values(6001,4008);
+Insert Into Empauth Values(6002,4001);
+Insert Into Empauth Values(6002,4002);
+Insert Into Empauth Values(6003,4003);
+Insert Into Empauth Values(6002,4004);
+Insert Into Empauth Values(6002,4005);
+Insert Into Empauth Values(6002,4006);
+Insert Into Empauth Values(6002,4007);
+Insert Into Empauth Values(6002,4008);
+Insert Into Empauth Values(6003,4002);
+Insert Into Empauth Values(6003,4004);
+Insert Into Empauth Values(6003,4006);
+Insert Into Empauth Values(6004,4001);
+Insert Into Empauth Values(6004,4002);
+Insert Into Empauth Values(6004,4004);
+Insert Into Empauth Values(6004,4005);
+Insert Into Empauth Values(6004,4006);
+Insert Into Empauth Values(6005,4004);
+
+CREATE TABLE FAQ(
+faqNo NUMBER(10) CONSTRAINT FAQ_faqNo_PK PRIMARY KEY,
+empNo NUMBER(10) NOT NULL CONSTRAINT FAQ_EMPNO_FK REFERENCES Emp(EmpNo),
+faqCategory VARCHAR2(2000),
+faqTitle VARCHAR2(2000) NOT NULL,
+faqAnswer VARCHAR2(1000) Not Null);
+
+Create Sequence FAQ_SQ  Increment By 1 Start With 1 Nocache Nocycle;
+
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6001,'註冊問題','訂購需要先入會員嗎？','為了保障雙方的權益，請先註冊會員後在享受我們的服務');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6001,'註冊問題','我有註冊過會員，為什麼無法登入？','只要有註冊卻無法登入的狀況正常都是您的密碼輸入錯誤喔');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6001,'註冊問題','註冊之後可以更改E-mail嗎？','是可以的，請至會員專區修改');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6001,'註冊問題','我有很多寵物，可以註冊幾隻？','一般狀態上限為三隻，如果數量超過三隻請移除既有的寵物');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6001,'註冊問題','我想註冊所有的寵物，為什麼不行','本交友平台主要目的為提供會員互相交流的機會，並非以賺錢為目的，請多多包涵');
+
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'登入問題','我忘記密碼了，怎麼辦','請在登入頁面點選忘記密碼，系統會把密碼寄送至該信箱');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'登入問題','我原本是沒有寵物的會員，現在有了可以直接註冊寵物嗎？','不行，需要重新註冊帳號');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'登入問題','我密碼打錯太多次鎖住怎麼辦？','請直接在下方通知我們以便後需處理事宜');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'登入問題','我是店家也有寵物，可不可以用一個帳號登入就好','由於權限與設定的關係，我們傾向分流管理，造成不便敬請見諒');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'登入問題','我密碼明明是對的為什麼沒辦法登入？','一般狀況下，無法登入的原因不外乎帳號或密碼輸入錯誤，如果真的無法登入請直接聯絡我們');
+
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'約會問題','我感覺遇到怪人，怎麼辦？','請至申訴系統通知我們，我們會以最快速度了解狀況');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'約會問題','我覺得約會對象的態度很差，可以退費嗎？','原則上是不行的，但是你可以透過申訴系統告訴我們具體的狀況');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'約會問題','跟我約會的寵物跟照片明顯不一樣，這是詐騙！','有這種情況請立刻通知我們，確認狀況之後我們會給予賣方記點及退費給買方');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'約會問題','我約會的對象爽約，你們是不是應該加倍賠償我？','發生們這種狀況的機率很少，原則上我們會將預繳的款項退還給你並記賣方違規點數一點，但是無法給予雙倍的賠償');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'約會問題','我覺得賣方開的價錢太高了，可以議價嗎？','我們不希望有會員間私下交易，原因不外乎風險問題，雖然私下的交易我們無法管控，但是還是呼籲不要有私下交易的狀況');
+
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'交易問題','如何查詢我的訂單資料呢？','請至本站「會員專區」查詢購買資料');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'交易問題','為什麼在「訂單查詢」專區裡查詢不到我的訂單呢？','請確認輸入的訂購E-mail及密碼是否正確？！我們常發現訂購和查詢Mail address不同而致使查詢不到。當輸入正確時卻未出現資料可能為以下三種情況之─：1. 訂購時所填寫的資料有誤或與查詢mail不同；2. 未訂購成功；3. 非本站訂購');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'交易問題','如何取消訂單？訂單數量有誤如何更改？','由於受限營運、認證中心和銀行規範，無法變更訂單付款方式、內容、金額或是退補差額方式換購其它商品，因此尚無法提供線上網路直接由顧客取消訂單或修改，如有需要變更，我們建議最晚於貨到７日內至本站「顧客中心」申請退訂再重訂。');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'交易問題','訂購時忘了加購商品，請問可以再追加嗎？','未完成付款者，請重新訂購即可。但已付款者，因受限銀行系統及作業規定，請恕無法再行追加，此時請至專館另行添購。');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'交易問題','為什麼要訂購的商品，卻無法進入訂購頁面？','當您訂購時，卻發現無法進入訂購頁面，或頁面顯示本館的首頁畫面，即表示該項商品因廠商促銷活動已結束，商品不再提供訂購了，建議您可以重新整理瀏覽器確認一下或是考量選購其它商品！');
+
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'其他問題','請問退款的方式有哪些？','一般而言，我們退款方式分為信用卡刷退或銀行帳戶退款兩種，因應每位消費者訂單付款方式不同而有差異，若您於辦理退貨時，系統請您填寫退款帳號資料，請您務必填寫正確，以利為您儘速完成退款。當退款完成時，我們會發送退款完成通知信通知您。');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'其他問題','如果我有意見該怎麼告訴你們？','請於本頁下方提交你的問題，我們會盡快回覆');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'其他問題','我的寵物被弄受傷了，怎麼跟對方求償？','請在事發當下報警並在事後通知站方，我們會盡力協助解決');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'其他問題','我好像被變態纏上了，怎麼辦？','請立刻報警，我們會依據警方的要求提供必要協助');
+INSERT INTO FAQ (FaqNo,EmpNo,FaqCategory,FaqTItle,FaqAnswer) VALUES (FAQ_SQ.NEXTVAL,6002,'其他問題','我對你們的平台有意見，該如何告知','請在頁面下方提交你的問題');
+
+
+CREATE TABLE USERQUESTION(
+userQNo NUMBER(10) CONSTRAINT USERQUESTION_userQNo_PK PRIMARY KEY,
+faqNo NUMBER(10) CONSTRAINT USERQUESTION_FAQNO_FK REFERENCES FAQ(FAQNO),
+userQCategory VARCHAR2(20),
+userQTitle VARCHAR2(50),
+userQContent VARCHAR2(3000) Not Null);
+
+Create Sequence USERQUESTION_SQ  Increment By 1 Start With 1 Nocache Nocycle;
+
+INSERT INTO USERQUESTION (UserQNo,FaqNo,UserQCategory,UserQTItle,UserQContent) VALUES (USERQUESTION_SQ.NEXTVAL,1,'登入問題','我沒辦法登入阿阿阿','網站超爛沒辦法登入啦');
+INSERT INTO USERQUESTION (UserQNo,FaqNo,UserQCategory,UserQTItle,UserQContent) VALUES (USERQUESTION_SQ.NEXTVAL,2,'登入問題','我沒辦法登入阿阿阿','網站超爛沒辦法登入啦');
+INSERT INTO USERQUESTION (UserQNo,FaqNo,UserQCategory,UserQTItle,UserQContent) VALUES (USERQUESTION_SQ.NEXTVAL,3,'登入問題','我沒辦法登入阿阿阿','網站超爛沒辦法登入啦');
+INSERT INTO USERQUESTION (UserQNo,FaqNo,UserQCategory,UserQTItle,UserQContent) VALUES (USERQUESTION_SQ.NEXTVAL,4,'登入問題','我沒辦法登入阿阿阿','網站超爛沒辦法登入啦');
+INSERT INTO USERQUESTION (UserQNo,FaqNo,UserQCategory,UserQTItle,UserQContent) VALUES (USERQUESTION_SQ.NEXTVAL,5,'登入問題','我沒辦法登入阿阿阿','網站超爛沒辦法登入啦');
+
+
+
+
+CREATE TABLE NEWS(
+newsNo NUMBER(10) CONSTRAINT NEWS_newsNo_PK PRIMARY KEY,
+empNo NUMBER(10) NOT NULL CONSTRAINT NEWS_EMPNO_FK REFERENCES Emp(EmpNo),
+newsTitle VARCHAR2(50) NOT NULL,
+newsContent VARCHAR2(1000) NOT NULL,
+newsDate DATE Not Null);
+
+Create Sequence NEWS_SQ  Increment By 1 Start With 1 Nocache Nocycle;
+
+INSERT INTO NEWS (NewsNo,EmpNo,NewsTitle,NewsContent,NewsDate) VALUES (NEWS_SQ.NEXTVAL,6001,'這是公告','公告內容在這',sysdate);
+INSERT INTO NEWS (NewsNo,EmpNo,NewsTitle,NewsContent,NewsDate) VALUES (NEWS_SQ.NEXTVAL,6002,'這是公告','公告內容在這',sysdate);
+INSERT INTO NEWS (NewsNo,EmpNo,NewsTitle,NewsContent,NewsDate) VALUES (NEWS_SQ.NEXTVAL,6002,'這是公告','公告內容在這',sysdate);
+INSERT INTO NEWS (NewsNo,EmpNo,NewsTitle,NewsContent,NewsDate) VALUES (NEWS_SQ.NEXTVAL,6003,'這是公告','公告內容在這',sysdate);
+INSERT INTO NEWS (NewsNo,EmpNo,NewsTitle,NewsContent,NewsDate) VALUES (NEWS_SQ.NEXTVAL,6003,'這是公告','公告內容在這',sysdate);
+
+
+CREATE TABLE SLIDE(
+slideNo NUMBER(10) CONSTRAINT SLIDENO_PK PRIMARY KEY,
+slideImg BLOB NOT NULL,
+slideCategory VARCHAR2(50) Not Null,
+slideTitle VARCHAR2(50) Not Null);
+
+Create Sequence SLIDE_SQ  Increment By 1 Start With 1 Nocache Nocycle;
+
+Insert Into Slide (Slideno,Slideimg,Slidecategory,Slidetitle) Values (Slide_Sq.Nextval,Empty_Blob(),'幻燈片類別','幻燈片抬頭');
+Insert Into Slide (Slideno,Slideimg,Slidecategory,Slidetitle) Values (Slide_Sq.Nextval,Empty_Blob(),'幻燈片類別','幻燈片抬頭');
+Insert Into Slide (Slideno,Slideimg,Slidecategory,Slidetitle) Values (Slide_Sq.Nextval,Empty_Blob(),'幻燈片類別','幻燈片抬頭');
+Insert Into Slide (Slideno,Slideimg,Slidecategory,Slidetitle) Values (Slide_Sq.Nextval,Empty_Blob(),'幻燈片類別','幻燈片抬頭');
+INSERT INTO SLIDE (SlideNo,SlideImg,SlideCategory,SlideTitle) VALUES (SLIDE_SQ.NEXTVAL,EMPTY_BLOB(),'幻燈片類別','幻燈片抬頭');
+
+CREATE TABLE AD(
+adNo NUMBER(10) CONSTRAINT ADNO_PK PRIMARY KEY,
+adContent VARCHAR2(1000) NOT NULL,
+adImg BLOB NOT NULL,
+adOnline DATE NOT NULL,
+adOffline DATE Not Null,
+adFee Number(10,2) Not Null);
+
+Create Sequence AD_SQ  Increment By 1 Start With 1 Nocache Nocycle;
+
+INSERT INTO AD (AdNo,AdContent,AdImg,AdOnline,AdOffline,AdFee) VALUES (AD_SQ.NEXTVAL,'廣告內容在這裡',EMPTY_BLOB(),sysdate,sysdate,1000.00);
+INSERT INTO AD (AdNo,AdContent,AdImg,AdOnline,AdOffline,AdFee) VALUES (AD_SQ.NEXTVAL,'廣告內容在這裡',EMPTY_BLOB(),sysdate,sysdate,1000.00);
+INSERT INTO AD (AdNo,AdContent,AdImg,AdOnline,AdOffline,AdFee) VALUES (AD_SQ.NEXTVAL,'廣告內容在這裡',EMPTY_BLOB(),sysdate,sysdate,1000.00);
+INSERT INTO AD (AdNo,AdContent,AdImg,AdOnline,AdOffline,AdFee) VALUES (AD_SQ.NEXTVAL,'廣告內容在這裡',EMPTY_BLOB(),sysdate,sysdate,1000.00);
+INSERT INTO AD (AdNo,AdContent,AdImg,AdOnline,AdOffline,AdFee) VALUES (AD_SQ.NEXTVAL,'廣告內容在這裡',EMPTY_BLOB(),sysdate,sysdate,1000.00);
+
+
+
+CREATE TABLE ALBUM(
+albumNo NUMBER(10) CONSTRAINT ALBUMNO_PK PRIMARY KEY,
+memNo NUMBER(10) NOT NULL CONSTRAINT ALBUM_MEMNO_FK REFERENCES MEMBER(MEMNO),
+albumTitle VARCHAR2(200) NOT NULL,
+albumCreatedTime DATE NOT NULL,
+albumModifiedTime DATE NOT NULL,
+albumStatus Number(2) Not Null,
+albumimgfile Blob Not Null);
+
+
+Create Sequence ALBUMNO_SQ Increment By 1 Start With 1 Nocache Nocycle;
+
+
+INSERT INTO ALBUM VALUES(ALBUMNO_SQ.NEXTVAL,5001,'相簿A',TO_DATE('20170710 17:50:20','YYYYMMDD HH24:MI:SS'),
+TO_DATE('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),0,EMPTY_BLOB());
+
+
+
+
+
+Create Table Albumimg(
+Imgno Number(10) Constraint Albumimg_Imgno_Pk Primary Key,
+albumNo NUMBER(10) NOT NULL CONSTRAINT ALBUMIMG_ALBUMNO_FK REFERENCES ALBUM(ALBUMNO),
+imgTitle VARCHAR2(100) NOT NULL,
+imgDesc VARCHAR2(2000) NOT NULL,
+imgCreatedTime DATE NOT NULL,
+imgModifiedTime DATE  NOT NULL,
+imgFileName VARCHAR2(200) NOT NULL,
+imgExtName VARCHAR2(50) NOT NULL,
+Imgfile Blob Not Null
+);
+
+Create Sequence ALBUMIMG_SQ Increment By 1 Start With 1 Nocache Nocycle;
+
+Insert Into Albumimg Values(Albumimg_SQ.Nextval,1,'狗狗','這是隻超可愛的狗狗，真的好可愛啊',To_Date('20170710 17:50:20','YYYYMMDD HH24:MI:SS'),
+To_Date('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),'hello','image/jpeg',Empty_Blob());
+Insert Into Albumimg Values(Albumimg_SQ.Nextval,1,'狗狗','這是隻超可愛的狗狗，真的好可愛啊',To_Date('20170710 17:50:20','YYYYMMDD HH24:MI:SS'),
+To_Date('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),'狗狗','image/jpeg',Empty_Blob());
+Insert Into Albumimg Values(Albumimg_SQ.Nextval,1,'相片S','這是隻超可愛的狗狗，真的好可愛啊',To_Date('20140210 17:50:20','YYYYMMDD HH24:MI:SS'),
+To_Date('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),'超可愛的狗狗','image/jpeg',Empty_Blob());
+Insert Into Albumimg Values(Albumimg_SQ.Nextval,1,'超可愛的狗狗','這是隻超可愛的狗狗，真的好可愛啊',To_Date('20130710 17:50:20','YYYYMMDD HH24:MI:SS'),
+To_Date('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),'123FEW','image/jpeg',Empty_Blob());
+Insert Into Albumimg Values(Albumimg_SQ.Nextval,1,'超可愛的狗狗','這是隻超可愛的狗狗，真的好可愛啊',To_Date('20170710 17:50:20','YYYYMMDD HH24:MI:SS'),
+TO_DATE('20170710 20:50:20','YYYYMMDD HH24:MI:SS'),'RTYQWE','image/jpeg',EMPTY_BLOB());
+
+
+CREATE TABLE ord 
+(ordNo   NUMBER(10) Constraint ORDER_ORDNO_Pk Primary Key,
+memNo NUMBER(10) NOT NULL,
+ordDate DATE NOT NULL,
+ordCheck DATE NOT NULL,
+ordProduct DATE ,
+ordClose DATE ,
+ordStatus NUMBER(2) NOT NULL,
+ordShip NUMBER(3) NOT NULL,
+ordTotal NUMBER(8) NOT NULL,
+conName VARCHAR2(15) NOT NULL,
+conAdd VARCHAR2(50) NOT NULL,
+conTel VARCHAR2(20) NOT NULL,
+CONSTRAINT ORD_MEMNO_FK FOREIGN KEY (MEMNO) REFERENCES MEMBER (MEMNO)
+);
+
+Create Sequence ORDNO_SQ Increment By 1 Start With 1001 Nocache Nocycle;
+
+
+
+CREATE TABLE Product 
+(prodNo   NUMBER(10) Constraint PRODUCT_PRODNO_Pk Primary Key,
+prodName  VARCHAR2(50) NOT NULL,
+prodPrice NUMBER(5) NOT NULL,
+prodImg BLOB NOT NULL,
+prodDescpt VARCHAR(500) NOT NULL,
+prodAdd DATE NOT NULL,
+prodOut DATE,
+prodState NUMBER(2) NOT NULL,
+prodType VARCHAR2(20) NOT NULL
+);
+
+Create Sequence PRODNO_SQ Increment By 1 Start With 2001 Nocache Nocycle;
+
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'強健加活力羊肉蔬果營養配方',230,EMPTY_BLOB(),'特別推薦：挑嘴狗、營養不良、哺乳中狗狗●單一羊肉蛋白質，全方位營養補足！●低致敏羊肉製成，適合皮膚過敏發癢的狗。●新鮮蔬果與全粒穀物給寵物滿滿的營養能量。●零生長激素，零人工防腐劑，零玉米、大豆等致敏穀物。●添加益生菌和益菌生，促進腸胃消化機能。●添加蔬菜水果，最佳的天然抗氧化配方。',TO_DATE('2017-01-5','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'無穀單一蛋白羊肉歐肯納根蘋果',350,EMPTY_BLOB(),'我們的草食生鮮羊肉於紐西蘭牧場中飼養，以WHOLEPREY? 比例的肉、肝及肚送達廚房，完全模擬大自然飲食，消除對合成添加物的需求。加入大量冷凍乾燥肝臟，大幅增加嗜口性，適合挑嘴的狗，新鮮蘋果、冬南瓜及南瓜則提供可溶性纖維，幫助消化功能，穩定狗狗的腸胃。',TO_DATE('2017-01-15','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'零穀羊肉全齡犬敏感配方',460,EMPTY_BLOB(),'優格天然零穀食譜零穀零負擔！優格天然零穀食譜，100％不含致敏穀源。添加田園蔬果， 提供礦物質與維生素，搭配優質腸道益生菌，簡單過生活',TO_DATE('2017-01-20','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'零穀五種魚全齡犬護毛配方',460,EMPTY_BLOB(),'天然零穀零負擔！100％不含致敏穀源。添加天然田園蔬果， 提供豐富的礦物質，再搭配優質腸道益生菌，發揮腸道保健、簡單過生活',TO_DATE('2017-01-31','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'特選成貓配方',220,EMPTY_BLOB(),'1至7歲貓咪適用。嚴選優質雞肉蛋白質，高消化吸收、低便臭。強化牛磺酸配方，維護視力及心臟機能。高含量亞麻油酸，促進皮膚健康、亮麗毛髮。濃縮蔓越莓精華，維護泌尿系統的健康。低灰低鎂配方，FLUTD第一道防護。卵磷脂添加，促進細胞活性化，幫助新陳代謝。螯合礦物質及維生素，強化並保健免疫系統。純天然素材，不含化學色素及人工防腐劑。',TO_DATE('2017-04-10','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'成幼貓化毛高纖配方雞肉加米',480,EMPTY_BLOB(),'雞肉是美味極容易吸收的蛋白質來源，且所含的脂肪多為不飽和脂肪酸，是最理想的蛋白質來源之ㄧ。高品質新鮮蕃茄，提供豐富茄紅素，超高抗氧化的茄紅素，不但可以延緩老化現象，同時可以提高抵抗力以及降低癌症風險。',TO_DATE('2017-04-18','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'室內貓低活動量配方雞肉加米',480,EMPTY_BLOB(),'雞肉是美味極容易吸收的蛋白質來源，且所含的脂肪多為不飽和脂肪酸，是最理想的蛋白質來源之ㄧ。高品質新鮮蕃茄，提供豐富茄紅素，超高抗氧化的茄紅素，不但可以延緩老化現象，同時可以提高抵抗力以及降低癌症風險。',TO_DATE('2017-04-20','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'成貓專用配方',350,EMPTY_BLOB(),'雙B化毛系統預防毛球形成，排除腸胃毛髮。去骨鮮雞肉與糙米，亞麻油酸與次亞麻油酸，強健皮膚毛色，FOS幫助消化吸收，無人工香料色素，天然維他命E抗氧化保鮮，控制尿液酸鹼值在6-6.5間，避免結石。',TO_DATE('2017-04-29','YYYY-MM-DD'),null,0,'寵物飼料');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'半封閉式貓便盆藕粉色',900,EMPTY_BLOB(),'25cm 超高防護蓋—兩片式雙層設計，更高防護，防貓咪帶出貓砂。可分離式設計—採用可拆卸雙層設計，清潔及搬運貓砂盆更為方便。弧形防污保護—弧形側邊及防落砂踏板可以防止貓咪帶出貓砂。',TO_DATE('2017-06-06','YYYY-MM-DD'),null,0,'寵物用品');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'簡易加高貓便盆橘白色',1380,EMPTY_BLOB(),'簡單時尚的加高設計日式貓廁所。防止貓砂溢出專用貓便盆。環境不會造成過多粉塵。三種不同的顏色代表日本貓咪（白色，黑色，三花）的花色。簡單方清理。',TO_DATE('2017-06-10','YYYY-MM-DD'),null,0,'寵物用品');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'耐咬史迪克',490,EMPTY_BLOB(),'以真正的木頭合成，味道清新又耐咬！榮獲美國權威寵物雜誌Pet Product News票選2012年最佳推薦寵物商品。美國原廠專利材料製成。散發天然木頭香味。無毒合成材質，不會裂開刮傷狗狗牙齦。室內與室外玩耍都適合。',TO_DATE('2017-06-22','YYYY-MM-DD'),null,0,'寵物用品');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'瘋狂跳跳逗貓棒白鼠',260,EMPTY_BLOB(),'利用「幫浦」的概念設計出令人都動搖的尾巴讓貓奴變身為貓的王者擁有專利的逗貓玩具，左跳又跳的毛球一定會讓家中的貓咪玩瘋！',TO_DATE('2017-06-28','YYYY-MM-DD'),null,0,'寵物用品');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'原色藤編寵物窩',950,EMPTY_BLOB(),'採用上等柳條編織而成，傳統手工編制而成，做工精緻，結實耐用，空間大，里外光滑，貓咪和狗狗都可以用',TO_DATE('2017-08-04','YYYY-MM-DD'),null,0,'其他');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'黑巧克力蒙古包加涼蓆',1950,EMPTY_BLOB(),'配有涼蓆墊，四季可用兩種造型，可暖可涼 (頂部可拆卸)墊子可拆洗，降低皮膚病發生機率玉米粒面料採用蜂窩造型，規則空隙，透氣性好，避免久用的海綿發霉軟到躺下就想睡－北極絨材質柔軟貼合，每根絨毛都在撐起肌膚',TO_DATE('2017-08-12','YYYY-MM-DD'),null,0,'其他');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'城堡貓屋與喵星人進駐城堡',699,EMPTY_BLOB(),'是貓屋也是玩具，無限組合、可愛、好玩、設計、貓抓板。',TO_DATE('2017-08-20','YYYY-MM-DD'),null,0,'其他');
+INSERT INTO PRODUCT VALUES (PRODNO_SQ.NEXTVAL,'火車貓屋',300,EMPTY_BLOB(),'火車貓屋，是個具有相當安全感的紙牛奶盒窩，內附保暖度極佳地羊毛氈墊子，而紙箱黑洞的吸引力十足，讓愛貓一進去就出不來了，更可以透過火車前面的小洞與愛貓互動，這對於愛貓來說這是非常有趣且非常有安全感的，躲藏與玩耍兼具的絕佳藏匿處。',TO_DATE('2017-08-24','YYYY-MM-DD'),null,0,'其他');
+
+
+
+CREATE TABLE ORDERLIST 
+(ordNo   NUMBER(10) NOT NULL,
+prodNo  NUMBER(10) NOT NULL,
+proPrice NUMBER(10) NOT NULL,
+proQua NUMBER(10) NOT NULL,
+CONSTRAINT ORDERLIST_OLPRODNO_PK PRIMARY KEY(ORDNO,PRODNO),
+CONSTRAINT ORDERLIST_ORDNO_FK FOREIGN KEY (ORDNO) REFERENCES ORD (ORDNO),
+CONSTRAINT ORDERLIST_PRODNO_FK FOREIGN KEY (PRODNO) REFERENCES PRODUCT (PRODNO)
+ 
+);
+
+
+
+
+
+CREATE TABLE WITHDRAW 
+(withdrawNo   NUMBER(10) Constraint WITHDRAW_WITHDRAWNO_Pk Primary Key,
+memNo  NUMBER(10) NOT NULL,
+withdrawNum NUMBER(10) NOT NULL,
+applyTime DATE NOT NULL,
+withdrawStatus NUMBER(2) NOT NULL,
+CONSTRAINT WITHDRAW_MEMNO_FK FOREIGN KEY (MEMNO) REFERENCES MEMBER (MEMNO)
+);
+
+
+Create Sequence WITHDRAWNO_SQ Increment By 1 Start With 4001 Nocache Nocycle;
+
+INSERT INTO WITHDRAW VALUES (WITHDRAWNO_SQ.NEXTVAL,5001,1000,TO_DATE('2017-07-10','YYYY-MM-DD'),1);
+INSERT INTO WITHDRAW VALUES (WITHDRAWNO_SQ.NEXTVAL,5002,2000,TO_DATE('2017-09-10','YYYY-MM-DD'),2);
+INSERT INTO WITHDRAW VALUES (WITHDRAWNO_SQ.NEXTVAL,5003,3000,TO_DATE('2017-05-10','YYYY-MM-DD'),1);
+
+CREATE TABLE CHARGES 
+(chargeNo   NUMBER(10) Constraint CHARGE_CHARGENO_Pk Primary Key,
+Memno  Number(10) ,
+chargeNum NUMBER(10) NOT NULL,
+applyTime DATE NOT NULL,
+chargeStatus NUMBER(2) NOT NULL,
+payWay NUMBER(2) NOT NULL,
+CONSTRAINT CHARGE_MEMNO_FK FOREIGN KEY (MEMNO) REFERENCES MEMBER (MEMNO)
+);
+
+Create Sequence CHARGENO_SQ Increment By 1 Start With 3001 Nocache Nocycle;
+
+INSERT INTO CHARGES VALUES (CHARGENO_SQ.NEXTVAL,5001,1000,TO_DATE('2017-07-10','YYYY-MM-DD'),0,1);
+Insert Into Charges Values (Chargeno_Sq.Nextval,5002,5000,To_Date('2017-07-20','YYYY-MM-DD'),1,0);
+INSERT INTO CHARGES VALUES (CHARGENO_SQ.NEXTVAL,5003,11000,TO_DATE('2017-07-30','YYYY-MM-DD'),2,1);
+
+CREATE TABLE REST (
+RESTNO NUMBER(10) NOT NULL PRIMARY KEY,
+RESTNAME VARCHAR2(200) NOT NULL,
+RESTADD VARCHAR2(600) NOT NULL,
+RESTLOCATE VARCHAR2(60) NOT NULL,
+RESTPHONE VARCHAR2(60) NOT NULL,
+RESTINTRO VARCHAR2(3000) ,
+RESTKIND NUMBER(5) NOT NULL,
+RESTREVIEWSTATUS NUMBER(2) NOT NULL ,
+RESTLONGTITUDE NUMBER(9,6) NOT NULL,
+RESTLATITUDE NUMBER(9,6) NOT NULL
+);
+
+CREATE SEQUENCE REST_SEQ 
+MINVALUE 0 
+MAXVALUE 99999 
+INCREMENT BY 1 
+START WITH 7001 
+NOCACHE 
+NOORDER 
+NOCYCLE ;
+
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'林可可家的牧場','桃園市龍潭區十一份路196號','桃園市','(03)471-1508','petRestaurantIntro01',1,0,121.238048,24.843007);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'台南項圈工場','台南市南區大成路一段40號','台南市','0985-327-588','petRestaurantIntro02',1,0,120.200102,22.975161);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'宜蘭貓極簡','宜蘭縣五結鄉大吉五路8號','宜蘭縣','(03)960-5570','petRestaurantIntro05',1,3,121.795602,24.695355);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'肥貓故事館','台南市中西區神農街135號','台南市','(06)-220-5688','petRestaurantIntro03',0,0,120.193015,22.997922);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'森林小徑','台中市北屯區文心路四段131號','台中市','(04)2298-2238','petRestaurantIntro05',0,0,120.673016,24.17387);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓與長頸鹿','嘉義市西區忠義街19之1號','嘉義市','0987-609-409','petRestaurantIntro05',0,0,120.4455,23.475447);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'日光貓','高雄市左營區光興街49號','高雄市','(07)556-8727','petRestaurantIntro04',0,0,120.307877,22.660561);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'DoGu狗民小學','高雄市左營區文自路980號','高雄市','0986-301-320','petRestaurantIntro05',1,0,120.314809,22.68621);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'芭樂狗','宜蘭縣宜蘭市復興路二段168-1號','宜蘭縣','(03)935-1655','petRestaurantIntro05',1,0,121.743728,24.750426);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'3CATS三隻貓餐廳','宜蘭縣冬山鄉冬山路五段380號','宜蘭縣','(03)954-1001','petRestaurantIntro05',0,0,121.765061,24.668693);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'霍爾廚房','花蓮縣花蓮市莊敬路102號','花蓮縣','0938-968-217','petRestaurantIntro05',1,0,121.588712,23.980337);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'193咖啡館','台東縣台東市洛陽街193號','台東縣','(08)933-0193','petRestaurantIntro05',0,0,121.140085,22.760814);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'草月咖啡館','台東縣台東市仁德街60號','台東縣','(08)936-2168','petRestaurantIntro05',1,0,121.152569,22.757861);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Ball2 Coffee ','台灣台北市大安區敦化南路一段233巷52號','台北市','(02)2773-5549 ','petRestaurantIntro0',1,0,121.552108,25.040302);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Bone House烘培屋 ','台灣台北市大安區敦化南路二段63巷53弄1號','台北市','(02)2704-1101 ','petRestaurantIntro1',1,0,121.551705,25.031097);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Cafe OSO ','台灣台北市大安區師大路93巷13號','台北市','(02)2364-0002 ','petRestaurantIntro2',1,0,121.529078,25.022948);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Copsta Fria ','台灣台北市內湖區江南街71巷16弄32號','台北市','(02)2658-8320 ','petRestaurantIntro3',1,0,121.577497,25.075562);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Crazy Dog ','台灣台北市松山區富錦街411號','台北市','(02)2763-5749 ','petRestaurantIntro4',0,0,121.560728,25.06084);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Doors ','台灣台北市中山區遼寧街45巷15號','台北市','(02)2777-5760 ','petRestaurantIntro5',2,0,121.542852,25.048861);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'La La Cafe ','台灣台北市內湖區成功路四段182巷6弄25號','台北市','(02)2790-8484 ','petRestaurantIntro6',2,0,121.593219,25.083701);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'OM阿HUM ','台灣台北市大安區泰順街60巷18弄6號','台北市','(02)2362-3919 ','petRestaurantIntro7',1,0,121.52976,25.022022);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'OSO CAFE ','台灣台北市大安區師大路93巷13號','台北市','(02)2364-0002 ','petRestaurantIntro8',1,0,121.529078,25.022948);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'PN218 ','台灣台北市中山區松江路133巷18號','台北市','(02)2501-0553 ','petRestaurantIntro9',2,0,121.534349,25.054292);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Puppy Dog Zone ','台灣台北市士林區仰德大道三段86號','台北市','(02)2862-6188 ','petRestaurantIntro10',0,0,121.553148,25.119854);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Rich House ','台灣台北市大安區光復南路72巷23弄16號','台北市','(02)2731-9734 ','petRestaurantIntro11',2,0,121.55623,25.044427);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Rnua Runa ','台灣台北市大安區忠孝東路三段251巷3弄1號','台北市','(02)8773-2085 ','petRestaurantIntro12',2,0,121.541808,25.04242);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Smart Caf''e ','台灣台北市大安區四維路208巷4號','台北市','(02)2700-7730 ','petRestaurantIntro13',2,0,121.547647,25.026268);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'三十三間堂 ','台灣台北市萬華區康定路116號','台北市','(02)2361-0807 ','petRestaurantIntro14',1,0,121.502039,25.040982);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'川瀨野天溫泉 ','台灣台北市士林區至善路三段55號','台北市','(02)8241-4567 ','petRestaurantIntro15',0,0,121.56526,25.113137);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'小貓花園 ','台灣台北市士林區福華路129號','台北市','(02)2835-3335 ','petRestaurantIntro16',0,0,121.522235,25.102394);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'小魚兒 ','台灣台北市中山區興安街85號','台北市','(02)2517-0030 ','petRestaurantIntro17',2,0,121.543134,25.05628);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'水鯤生活空間 ','台灣台北市大安區永康街10-3號','台北市','(02)2391-1886 ','petRestaurantIntro18',1,0,121.529506,25.031761);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'天母‧狗寶貝 ','台灣台北市士林區天母西路5巷13號','台北市','(02)2872-4132 ','petRestaurantIntro19',0,0,121.528631,25.119032);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'日彩咖啡 ','台灣台北市士林區中山北路七段34-6號','台北市','(02)2875-2195 ','petRestaurantIntro20',1,0,121.531039,25.11964);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'誠品中山店內-古厝茶緣餐廳 ','台灣台北市士林區東山路25巷81弄29號','台北市','(02)2873-1081 ','petRestaurantIntro21',0,0,121.540559,25.122527);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'布拉格 ','台灣台北市大安區泰順街40巷30號','台北市','(02)2369-7722 ','petRestaurantIntro22',2,0,121.529909,25.024247);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'汪汪喵喵香草花園 ','台灣台北市士林區文林路194號','台北市','(02)2882-0205 ','petRestaurantIntro23',1,0,121.527152,25.089863);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'咖啡走廊 ','台灣台北市大同區民權西路136號','台北市','(02)2557-4317 ','petRestaurantIntro24',2,0,121.516484,25.062735);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'逗點茶坊 ','台灣台北市松山區八德路四段245巷38號','台北市','(03)955-6783 ','petRestaurantIntro25',2,0,121.564386,25.05022);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'河濱狗棧 ','台灣台北市中山區北安路464號','台北市','(02)8509-1609 ','petRestaurantIntro26',0,0,121.544746,25.079576);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'芝麻站法式小館 ','台灣台北市大安區龍泉街74號','台北市','(02)2363-8015 ','petRestaurantIntro27',1,0,121.52926,25.0233);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'狗狗多多的家 ','台灣台北市士林區雨聲街203-1號','台北市','(02)8866-1946 ','petRestaurantIntro28',0,0,121.533687,25.101461);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'捲尾巴寵物餐廳 ','台灣新北市永和區永平路306號','新北市','02-2231-8882 ','petRestaurantIntro29',0,0,121.507278,25.012514);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'茶' || chr(38) || '咖啡牧場 ','台灣台北市大安區和平東路一段159-1號','台北市','(02)2357-8699 ','petRestaurantIntro30',2,0,121.5314,25.026592);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'革命之家 ','台灣台北市文山區指南路二段17號','台北市','(02)2937-7602 ','petRestaurantIntro31',2,0,121.573499,24.988308);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'神仙菩提狗 ','台灣台北市士林區天母西路5巷17號','台北市','(02)2873-0411 ','petRestaurantIntro32',0,0,121.528577,25.119234);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'路得咖啡 ','台灣台北市中山區遼寧街45巷7號','台北市','(02)2752-7113 ','petRestaurantIntro33',0,0,121.542401,25.048776);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'綠色咖哩 ','台灣台北市萬華區武昌街二段82巷3弄1號','台北市','(02)2389-8609 ','petRestaurantIntro34',0,0,121.505951,25.044698);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓蛋糕咖啡館 ','台灣台北市文山區指南路二段19號','台北市','(02)2936-4081 ','petRestaurantIntro35',0,0,121.573542,24.988301);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓花園 ','台灣台北市士林區福華路129號','台北市','(02)2835-3335 ','petRestaurantIntro36',0,0,121.522235,25.102394);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'酷狗之家 ','台灣台北市士林區忠義街86號','台北市','(02)8866-1266 ','petRestaurantIntro37',1,0,121.531922,25.106337);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'築樔 ','台灣台北市大安區通化街39巷50弄90號','台北市','(02)8732-8759 ','petRestaurantIntro38',0,0,121.554628,25.028137);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'躲貓貓 ','台灣台北市大安區復興南路二段39號','台北市','(02)2705-3375 ','petRestaurantIntro39',2,0,121.543839,25.031821);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'躲起來 ','台灣台北市中山區北安路621巷43號','台北市','(02)2533-1218 ','petRestaurantIntro40',2,0,121.546927,25.083079);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'廚匠 ','台灣台北市大安區敦化南路一段160巷6號','台北市','(02)2775-1637 ','petRestaurantIntro41',0,0,121.548201,25.043455);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'極簡咖啡館 ','台灣台北市大安區泰順街2巷42號','台北市','(02)2362-9734 ','petRestaurantIntro42',0,0,121.529569,25.025603);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'樂狗咖啡 ','台灣台北市松山區塔悠路93號','台北市','(02)2753-3419 ','petRestaurantIntro43',2,0,121.570482,25.052256);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'醍醐咖啡 ','台灣台北市中山區遼寧街45巷7號','台北市','(02)2740-8419 ','petRestaurantIntro44',2,0,121.542401,25.048776);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'羅曼義式咖啡 ','台灣台北市大安區新生南路三段76巷7號','台北市','(02)2362-3787 ','petRestaurantIntro45',0,0,121.53323,25.019101);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'寵物餐廳 ','台灣台北市士林區文林路763-5號','台北市','(02)2883-7008 ','petRestaurantIntro46',0,0,121.519089,25.103113);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'B' || chr(38) || 'W拉不拉多與黃金獵犬俱樂部 ','台灣新北市新店區永興路10-1號','新北市','(02)2666-0178 ','petRestaurantIntro47',2,0,121.54543,24.940377);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Love Dog ' || chr(38) || ' Mini Club ','台灣新北市永和區仁愛路85號','新北市','(02)8941-7818 ','petRestaurantIntro48',1,0,121.512747,25.013137);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'人文咖啡館 ','台灣新北市永和區林森路90號','新北市','(02)2927-7691 ','petRestaurantIntro49',2,0,121.523371,25.003852);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'小熊多多的家 ','台灣新北市淡水區沙崙路165號','新北市','(02)2805-5028 ','petRestaurantIntro50',2,0,121.423392,25.183044);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'東昇碳烤餐廳 ','台灣新北市汐止區忠一街8巷67號','新北市','(02)2619-2282 ','petRestaurantIntro51',0,0,121.622903,25.072728);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'寶之屋 Bowo Cafe ','台灣新北市中和區中安街116號','新北市','(02)2926-3767 ','petRestaurantIntro52',0,0,121.511638,25.001132);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓來貓去茶坊 ','台灣新北市板橋區忠孝路131號','新北市','(02)2959-6890 ','petRestaurantIntro53',1,0,121.463118,25.002393);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓鋪茶坊板橋店 ','台灣新北市板橋區公園街34巷16號','新北市','(02)2964-4694 ','petRestaurantIntro54',2,0,121.462009,25.008759);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓鋪茶坊永和店 ','台灣新北市永和區中山路一段92號','新北市','(02)2232-7055 ','petRestaurantIntro55',2,0,121.51178,25.010911);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Doggy House ','台灣桃園市中壢區環中東路二段296號','桃園市','(03)457-0472 ','petRestaurantIntro56',2,0,121.235758,24.948706);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'貓貓茶 Cat Cat Tea ','台灣桃園市中壢區大同路128號','桃園市','(03)331-5036 ','petRestaurantIntro57',2,0,121.221869,24.957232);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'溫馨生活館 ','台灣桃園市中壢區新興路285-1號','桃園市','(03)468-8856 ','petRestaurantIntro58',2,0,121.22949,24.954607);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'閣樓 ','台灣桃園市中壢區新生路278號','桃園市','(03)422-8708 ','petRestaurantIntro59',1,0,121.223116,24.963652);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'十街咖啡館 ','台灣新竹市東區金山十街92號','新竹市','(03)563-7987 ','petRestaurantIntro60',2,0,121.021198,24.776203);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'咕比特寵物咖啡館 ','台灣新竹市東區中華路二段621號','新竹市','(03)524-2679 ','petRestaurantIntro61',1,0,120.966993,24.798904);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'布魯茵 咖啡熊 ','台灣新竹市東區仁愛街63號','新竹市','(03)533-9889 ','petRestaurantIntro62',1,0,120.970528,24.807949);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'陽光花語 ','台灣苗栗縣南庄鄉員林村2鄰66號','苗栗縣','(037)-833737 ','petRestaurantIntro63',2,0,120.95516,24.641907);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'12 Cats ','台灣台中市西屯區慶和街92號','台中市','(04)2452-7982 ','petRestaurantIntro64',2,0,120.646561,24.176027);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Let''s Go Go 寵物咖啡館 ','台灣台中市北區健行路886-1號','台中市','(04)2208-7165 ','petRestaurantIntro65',1,0,120.668284,24.159481);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Moon ' || chr(38) || ' Cat ','台灣台中市龍井區新興路15巷9號','台中市','(04)2631-8557 ','petRestaurantIntro66',0,0,120.590188,24.180134);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'Pet Garden ','台灣台中市龍井區新興路7巷26號','台中市','(04)2632-8080 ','petRestaurantIntro67',1,0,120.591252,24.179915);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'北極寵物生活館 ','台灣台中市西屯區朝馬路67號','台中市','(04)2251-8822 ','petRestaurantIntro68',1,0,120.636746,24.168525);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'亞米雅米寵物餐廳 ','台灣台中市北屯區中清路一段99-29號','台中市','(04)2296-2428 ','petRestaurantIntro69',0,0,120.667389,24.179541);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'亞米雅米寵物生活館-狗仔王國寵物餐聽 ','台灣台中市大里區國光路二段806號','台中市','(04)2287-6767 ','petRestaurantIntro70',2,0,120.679349,24.116473);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'老街藝術庭園 ','台灣台中市南區頂橋三巷24-1號','台中市','(04)2285-1824 ','petRestaurantIntro71',0,0,120.674814,24.124781);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'瑪瑟亞祺 ','台灣台中市西屯區台中港路三段98之11號','台中市','(04)2463-9093 ','petRestaurantIntro72',0,0,120.618853,24.181528);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'探索寵物餐廳旗鑑店 ','台灣台中市北區崇德路一段540號','台中市','(04)2237-5205 ','petRestaurantIntro73',2,0,120.68544,24.166575);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'探索寵物餐廳much館 ','台灣台中市北屯區東山路二段148號','台中市','(04)2239-9386 ','petRestaurantIntro74',2,0,120.771369,24.199362);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'橘光呼嚕 ','台灣台中市龍井區藝術街16巷3號','台中市','(04)2631-2868 ','petRestaurantIntro75',0,0,120.595191,24.187614);
+Insert into PETYM.REST (RESTNO,RESTNAME,RESTADD,RESTLOCATE,RESTPHONE,RESTINTRO,RESTKIND,RESTREVIEWSTATUS,RESTLONGTITUDE,RESTLATITUDE) values (REST_SEQ.NEXTVAL,'AT茶飲輕食 ','台灣台南市中西區建業街70號','台南市','(06)213-6283 ','petRestaurantIntro76',2,0,120.205163,22.987888);
+
+CREATE TABLE RESTMEMBER (
+RESTMEMID VARCHAR2(60) NOT NULL ,
+RESTNO NUMBER(10) NOT NULL ,
+RESTMEMPSW VARCHAR2(60) NOT NULL ,
+CONSTRAINT RESTMEMBER_RESTNO_FK FOREIGN KEY (RESTNO) REFERENCES REST (RESTNO),
+CONSTRAINT RESTMEMBER_RESTMEMID_PK PRIMARY KEY (RESTMEMID));
+
+
+
+INSERT INTO RESTMEMBER (RESTMEMID,RESTNO,RESTMEMPSW) VALUES ('rest1',7001,'rest1');
+INSERT INTO RESTMEMBER (RESTMEMID,RESTNO,RESTMEMPSW) VALUES ('rest2',7002,'rest2');
+INSERT INTO RESTMEMBER (RESTMEMID,RESTNO,RESTMEMPSW) VALUES ('rest3',7003,'rest3');
+INSERT INTO RESTMEMBER (RESTMEMID,RESTNO,RESTMEMPSW) VALUES ('rest4',7004,'rest4');
+INSERT INTO RESTMEMBER (RESTMEMID,RESTNO,RESTMEMPSW) VALUES ('rest5',7005,'rest5');
+
+CREATE TABLE RESTIMG(
+RESTIMGNO NUMBER(10) NOT NULL,
+RESTMEMID VARCHAR2(60) NOT NULL,
+RESTIMGNAME VARCHAR2(300) NOT NULL,
+RESTIMGINTRO VARCHAR2(300) NOT NULL,
+RESTIMG BLOB NOT NULL,
+CONSTRAINT RESTIMG_RESTMEMID_FK FOREIGN KEY (RESTMEMID) REFERENCES RESTMEMBER (RESTMEMID),
+CONSTRAINT RESTIMG_RESTIMGNO_PK PRIMARY KEY (RESTIMGNO) );    
+
+CREATE SEQUENCE RESTIMG_SEQ
+MINVALUE 0
+MAXVALUE 99999
+INCREMENT BY 1
+START WITH 7001 
+NOCACHE
+NOORDER
+NOCYCLE;
+
+INSERT INTO RESTIMG(RESTIMGNO,RESTMEMID,RESTIMGNAME,RESTIMGINTRO,RESTIMG) VALUES (RESTIMG_SEQ.NEXTVAL,'rest1','相片名稱1','相片介紹1',EMPTY_BLOB() );
+INSERT INTO RESTIMG(RESTIMGNO,RESTMEMID,RESTIMGNAME,RESTIMGINTRO,RESTIMG) VALUES (RESTIMG_SEQ.NEXTVAL,'rest2','相片名稱2','相片介紹2',EMPTY_BLOB() );
+INSERT INTO RESTIMG(RESTIMGNO,RESTMEMID,RESTIMGNAME,RESTIMGINTRO,RESTIMG) VALUES (RESTIMG_SEQ.NEXTVAL,'rest3','相片名稱3','相片介紹3',EMPTY_BLOB() );
+INSERT INTO RESTIMG(RESTIMGNO,RESTMEMID,RESTIMGNAME,RESTIMGINTRO,RESTIMG) VALUES (RESTIMG_SEQ.NEXTVAL,'rest4','相片名稱4','相片介紹4',EMPTY_BLOB() );
+INSERT INTO RESTIMG(RESTIMGNO,RESTMEMID,RESTIMGNAME,RESTIMGINTRO,RESTIMG) VALUES (RESTIMG_SEQ.NEXTVAL,'rest5','相片名稱5','相片介紹5',EMPTY_BLOB() );
+
+CREATE TABLE ACTIVITY (
+ACTNO NUMBER(10) NOT NULL,
+RESTMEMID VARCHAR2(60) NOT NULL, 
+ACTNAME VARCHAR2(100) NOT NULL,
+ACTCONTENT CLOB NOT NULL,
+ACTDATE DATE NOT NULL,
+ACTFDATE DATE NOT NULL,
+ACTSTATUS NUMBER(5) NOT NULL,
+ACTULIMIT NUMBER(5) NOT NULL,
+ACTLLIMIT NUMBER(5) NOT NULL,
+ACTKIND NUMBER(5) NOT NULL,
+ACTANOTHERKIND VARCHAR2(60),
+ACTINITIMG BLOB NOT NULL,
+CONSTRAINT ACTIVITY_RESTMEMID_FK FOREIGN KEY (RESTMEMID) REFERENCES RESTMEMBER (RESTMEMID),
+CONSTRAINT ACTIVITY_ACTNO_PK PRIMARY KEY (ACTNO) );
+
+CREATE SEQUENCE ACTIVITY_SEQ
+MINVALUE 0
+MAXVALUE 99999
+INCREMENT BY 1
+START WITH 8001 
+NOCACHE
+NOORDER
+NOCYCLE;
+
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest1','我的屁屁最可愛','你家裡也擁有不輸科基屁屁的狗狗嗎?'||chr(10)||''||chr(10)||'歡迎一同遊玩互動，分享家裡最可愛的汪星人。',TO_DATE('2017-09-01','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,30,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest1','月黑風高','家裡有二哈想要跟大家一起玩耍嗎?'||chr(10)||''||chr(10)||'還是想一睹月月的可愛風貌?'||chr(10)||''||chr(10)||'快來加入我們，跟月月互動零距離!!',TO_DATE('2017-09-02','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,35,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest1','面見聖上','放慢腳步，輕聲細語，陶醉在貓咪溫柔的撒嬌'||chr(10)||''||chr(10)||'但不要過度打擾到其他喵星人休息或用膳喔。',TO_DATE('2017-09-03','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,0,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest1','寵物鼠大逃亡','店家細心準備了小迷宮給各位寵物鼠遊玩'||chr(10)||''||chr(10)||'歡迎各路人鼠前來挑戰。成功挑戰將獲得精美小品。',TO_DATE('2017-09-04','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,2,EMPTY_BLOB() );
+
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest2','我的屁屁最可愛','你家裡也擁有不輸科基屁屁的狗狗嗎?'||chr(10)||''||chr(10)||'歡迎一同遊玩互動，分享家裡最可愛的汪星人。',TO_DATE('2017-09-01','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,30,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest2','月黑風高','家裡有二哈想要跟大家一起玩耍嗎?'||chr(10)||''||chr(10)||'還是想一睹月月的可愛風貌?'||chr(10)||''||chr(10)||'快來加入我們，跟月月互動零距離!!',TO_DATE('2017-09-02','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,35,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest2','面見聖上','放慢腳步，輕聲細語，陶醉在貓咪溫柔的撒嬌'||chr(10)||''||chr(10)||'但不要過度打擾到其他喵星人休息或用膳喔。',TO_DATE('2017-09-03','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,0,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest2','寵物鼠大逃亡','店家細心準備了小迷宮給各位寵物鼠遊玩'||chr(10)||''||chr(10)||'歡迎各路人鼠前來挑戰。成功挑戰將獲得精美小品。',TO_DATE('2017-09-04','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,2,EMPTY_BLOB() );
+
+
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest3','我的屁屁最可愛','你家裡也擁有不輸科基屁屁的狗狗嗎?'||chr(10)||''||chr(10)||'歡迎一同遊玩互動，分享家裡最可愛的汪星人。',TO_DATE('2017-09-01','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,30,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest3','月黑風高','家裡有二哈想要跟大家一起玩耍嗎?'||chr(10)||''||chr(10)||'還是想一睹月月的可愛風貌?'||chr(10)||''||chr(10)||'快來加入我們，跟月月互動零距離!!',TO_DATE('2017-09-02','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,35,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest3','面見聖上','放慢腳步，輕聲細語，陶醉在貓咪溫柔的撒嬌'||chr(10)||''||chr(10)||'但不要過度打擾到其他喵星人休息或用膳喔。',TO_DATE('2017-09-03','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,0,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest3','寵物鼠大逃亡','店家細心準備了小迷宮給各位寵物鼠遊玩'||chr(10)||''||chr(10)||'歡迎各路人鼠前來挑戰。成功挑戰將獲得精美小品。',TO_DATE('2017-09-04','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,2,EMPTY_BLOB() );
+		
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest4','我的屁屁最可愛','你家裡也擁有不輸科基屁屁的狗狗嗎?'||chr(10)||''||chr(10)||'歡迎一同遊玩互動，分享家裡最可愛的汪星人。',TO_DATE('2017-09-01','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,30,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest4','月黑風高','家裡有二哈想要跟大家一起玩耍嗎?'||chr(10)||''||chr(10)||'還是想一睹月月的可愛風貌?'||chr(10)||''||chr(10)||'快來加入我們，跟月月互動零距離!!',TO_DATE('2017-09-02','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,35,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest4','面見聖上','放慢腳步，輕聲細語，陶醉在貓咪溫柔的撒嬌'||chr(10)||''||chr(10)||'但不要過度打擾到其他喵星人休息或用膳喔。',TO_DATE('2017-09-03','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,0,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest4','寵物鼠大逃亡','店家細心準備了小迷宮給各位寵物鼠遊玩'||chr(10)||''||chr(10)||'歡迎各路人鼠前來挑戰。成功挑戰將獲得精美小品。',TO_DATE('2017-09-04','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,2,EMPTY_BLOB() );
+
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest5','我的屁屁最可愛','你家裡也擁有不輸科基屁屁的狗狗嗎?'||chr(10)||''||chr(10)||'歡迎一同遊玩互動，分享家裡最可愛的汪星人。',TO_DATE('2017-09-01','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,30,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest5','月黑風高','家裡有二哈想要跟大家一起玩耍嗎?'||chr(10)||''||chr(10)||'還是想一睹月月的可愛風貌?'||chr(10)||''||chr(10)||'快來加入我們，跟月月互動零距離!!',TO_DATE('2017-09-02','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,35,5,1,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest5','面見聖上','放慢腳步，輕聲細語，陶醉在貓咪溫柔的撒嬌'||chr(10)||''||chr(10)||'但不要過度打擾到其他喵星人休息或用膳喔。',TO_DATE('2017-09-03','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,0,EMPTY_BLOB() );
+INSERT INTO ACTIVITY (ACTNO,RESTMEMID,ACTNAME,ACTCONTENT,ACTDATE,ACTFDATE,ACTSTATUS,ACTULIMIT,ACTLLIMIT,ACTKIND,ACTINITIMG)
+		VALUES (ACTIVITY_SEQ.NEXTVAL,'rest5','寵物鼠大逃亡','店家細心準備了小迷宮給各位寵物鼠遊玩'||chr(10)||''||chr(10)||'歡迎各路人鼠前來挑戰。成功挑戰將獲得精美小品。',TO_DATE('2017-09-04','YYYY-MM-DD'),TO_DATE('2017-08-30','YYYY-MM-DD'),2,20,5,2,EMPTY_BLOB() );
+
+
+CREATE TABLE ACTIMG(
+ACTIMGNO NUMBER(10) NOT NULL,
+ACTNO NUMBER(10) NOT NULL,
+ACTIMGNAME VARCHAR2(300) NOT NULL,
+ACTIMGINTRO VARCHAR2(300) NOT NULL,
+ACTIMG BLOB NOT NULL,
+CONSTRAINT ACTIMG_ACTNO_FK FOREIGN KEY (ACTNO) REFERENCES ACTIVITY (ACTNO),
+CONSTRAINT ACTIMG_ACTIMGNO_PK PRIMARY KEY (ACTIMGNO) );    
+
+CREATE SEQUENCE ACTIMG_SEQ
+MINVALUE 0
+MAXVALUE 99999
+INCREMENT BY 1
+START WITH 8001 
+NOCACHE
+NOORDER
+NOCYCLE;
+
+INSERT INTO ACTIMG(ACTIMGNO,ACTNO,ACTIMGNAME,ACTIMGINTRO,ACTIMG) VALUES (ACTIMG_SEQ.NEXTVAL,8001,'活動照片名稱1','活動照片介紹1',EMPTY_BLOB() );
+INSERT INTO ACTIMG(ACTIMGNO,ACTNO,ACTIMGNAME,ACTIMGINTRO,ACTIMG) VALUES (ACTIMG_SEQ.NEXTVAL,8002,'活動照片名稱2','活動照片介紹2',EMPTY_BLOB() );
+INSERT INTO ACTIMG(ACTIMGNO,ACTNO,ACTIMGNAME,ACTIMGINTRO,ACTIMG) VALUES (ACTIMG_SEQ.NEXTVAL,8003,'活動照片名稱3','活動照片介紹3',EMPTY_BLOB() );
+INSERT INTO ACTIMG(ACTIMGNO,ACTNO,ACTIMGNAME,ACTIMGINTRO,ACTIMG) VALUES (ACTIMG_SEQ.NEXTVAL,8002,'活動照片名稱4','活動照片介紹4',EMPTY_BLOB() );
+INSERT INTO ACTIMG(ACTIMGNO,ACTNO,ACTIMGNAME,ACTIMGINTRO,ACTIMG) VALUES (ACTIMG_SEQ.NEXTVAL,8003,'活動照片名稱5','活動照片介紹5',EMPTY_BLOB() );
+
+CREATE TABLE ACTDETIAL(
+ACTNO NUMBER(10) NOT NULL,
+MEMNO NUMBER(10) NOT NULL,
+MEMACTSTATUS NUMBER(2) NOT NULL,
+CONSTRAINT ACTDETIAL_ACTMEMNO_PK PRIMARY KEY(ACTNO,MEMNO), 
+CONSTRAINT ACTIVITY_ACTNO_FK FOREIGN KEY (ACTNO) REFERENCES ACTIVITY (ACTNO),
+CONSTRAINT MEMBER_MEMNO_FK FOREIGN KEY (MEMNO) REFERENCES MEMBER (MEMNO) );
+
+CREATE SEQUENCE ACTDETIAL_SEQ
+MINVALUE 0
+MAXVALUE 99999
+INCREMENT BY 1
+START WITH 1 
+NOCACHE
+NOORDER
+NOCYCLE;
+
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8001,5001,1);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8002,5001,0);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8004,5001,0);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8006,5002,1);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8007,5002,1);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8009,5002,1);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8003,5003,0);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8006,5003,1);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8009,5003,0);
+INSERT INTO ACTDETIAL (ACTNO,MEMNO,MEMACTSTATUS) VALUES (8010,5003,1);
+
+
+
+CREATE TABLE DIARY (
+ DIANO               		NUMBER(10) CONSTRAINT DIARY_DIANO_PK PRIMARY KEY,
+ MEMNO                		NUMBER(10) NOT NULL constraint diary_mem_fk references member(memno),
+ DIANAME                	VARCHAR2(100) NOT NULL,
+ DIATEXT           		CLOB NOT NULL,
+ DIAIMG                		BLOB,
+ DIACRETIME             	TIMESTAMP NOT NULL,
+ DIAMODTIME             	TIMESTAMP,
+ DIASTATE			NUMBER(2) NOT NULL,
+ DIAIMGEXTNAME			VARCHAR2(50) );
+ 
+ CREATE SEQUENCE DIARY_SEQ
+INCREMENT BY 1
+START WITH 10001
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+ 
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5001,'我家的狗','可愛喔，快來跟我約會吧',null,TO_TIMESTAMP('2017-08-01 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5002,'我家的狗','好可愛，快來跟我約會吧',null,TO_TIMESTAMP('2017-08-02 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5003,'我家的貓','可愛，快來跟我約會吧',null,TO_TIMESTAMP('2017-08-03 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5004,'我可愛的貓','LOVE，快來跟我約會吧',null,TO_TIMESTAMP('2017-08-04 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5005,'我可愛的狗','我好帥唷，快來跟我約會吧，汪!!',null,TO_TIMESTAMP('2017-08-05 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5006,'我可愛的其他','快來約會吧',null,TO_TIMESTAMP('2017-08-06 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5007,'我的愛寵','快來約會吧',null,TO_TIMESTAMP('2017-08-07 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5008,'我的寵物好想約會唷','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-08 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5009,'來約會吧','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-09 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5010,'快來約會吧','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-10 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5011,'我的元寶','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-11 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5012,'nickey','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-05 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5013,'愛寵cute','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-08 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5014,'心愛的','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-18 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+ INSERT INTO DIARY VALUES (DIARY_SEQ.NEXTVAL,5015,'好愛阿','快來跟我約會吧',null,TO_TIMESTAMP('2017-08-22 10:20:22','YYYY-MM-DD HH:MI:SS'),null,0,'image');
+
+
+
+
+
+CREATE TABLE DIAMSG (
+ DIAMSGNO               	NUMBER(8) CONSTRAINT DIAMSG_DIAMSGNO_PK PRIMARY KEY,
+ DIANO                		NUMBER(8) NOT NULL constraint diamsg_diary_fk references diary(diano),
+ MEMNO                		NUMBER(8) NOT NULL constraint diamsg_mem_fk references member(memno),
+ DIAMSGTEXT           		VARCHAR2(1000) NOT NULL,
+ DIAMSGTIME             	TIMESTAMP NOT NULL,
+ DIAMSGSTATE				NUMBER(1) NOT NULL );
+ 
+CREATE SEQUENCE DIAMSG_SEQ
+INCREMENT BY 1
+START WITH 20001
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+ 
+INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10001,5016,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10002,5017,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10003,5018,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10002,5019,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10005,5020,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10006,5021,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10007,5022,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10008,5023,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10009,5025,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10010,5026,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10011,5027,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10012,5028,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10013,5029,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10014,5030,'好可愛唷',systimestamp,0);
+ INSERT INTO DIAMSG VALUES (DIAMSG_SEQ.NEXTVAL,10015,5031,'好可愛唷',systimestamp,0);
+
+CREATE TABLE LETTERTYPE (
+ LETTERTYPENO              		NUMBER(8) ,
+ LETTERTYPENAME                	VARCHAR2(100) NOT NULL,
+ LETTERTYPETEXT                	CLOB NOT NULL,
+ CONSTRAINT lettertype_pk PRIMARY KEY(LETTERTYPENO) );
+ 
+CREATE SEQUENCE LETTERTYPE_SEQ
+INCREMENT BY 1
+START WITH 30001
+NOMAXVALUE
+Nocycle
+NOCACHE;
+ 
+ 
+INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '購買約會成功', '您剛剛已經購買一場精采的約會，記得當天要到場唷，約會時間為:');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '買家約會取消', '您購買的約會已經取消了，點數會在不久後退還給您。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '被檢舉事宜', '由於你上架商品，內文引起一些人的不蘇胡，系統已經將你的商品下架，並且記點，希望你下次改善。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '被申訴事宜', '由於您的約會對象對此次約會有不滿意見，系統已經記點，希望下次改進。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '加入活動成功', '您剛剛加入了一場驚天動地的餐廳活動，時間為：');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '活動成功舉辦', '您加入的活動已經確定辦成，請記得參加，時間為：');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '活動取消事宜', '您加入活動因為一些原因已經被餐廳取消，造成不便請見諒。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '商城商品出貨', '您購買的商品已經由工廠出貨，出貨日為：');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '約會被購買', '您上架的約會商品已經被購買，記得當天要到場唷，約會時間為：');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '被買家取消約會', '買家已經取消跟您的約會。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '賣家約會取消', '您已經將你的約會取消。   *註記：此項舉動一個月只能一次。');
+ INSERT INTO LETTERTYPE VALUES (LETTERTYPE_SEQ.NEXTVAL, '被賣家取消約會', '賣家已經取消約會，點數會在不久後退還給您。');
+
+
+
+CREATE TABLE LETTER (
+ LETTERNO              			NUMBER(8) ,
+ LETTERTYPENO                	NUMBER(8) NOT NULL,
+ MEMNO                			NUMBER(10) NOT NULL,
+ LETTERTIME						TIMESTAMP NOT NULL,
+ LETTERSTATE					NUMBER(2) NOT NULL,
+ LETTERTAG						NUMBER(2) NOT NULL,
+ LETTERTEXT						CLOB,
+ CONSTRAINT letter_pk PRIMARY KEY(LETTERNO),
+ CONSTRAINT letter_lettertypeno_fk FOREIGN KEY(LETTERTYPENO) REFERENCES LETTERTYPE(LETTERTYPENO),
+ CONSTRAINT letter_memno_fk FOREIGN KEY(MEMNO) REFERENCES MEMBER(MEMNO)
+ );
+ 
+ CREATE SEQUENCE LETTER_SEQ
+INCREMENT BY 1
+START WITH 40001
+NOMAXVALUE
+Nocycle
+NOCACHE;
+ 
+ INSERT INTO LETTER VALUES (LETTER_SEQ.NEXTVAL, 30001,5001,systimestamp,0,1, '恭喜你約會');
+ INSERT INTO LETTER VALUES (LETTER_SEQ.NEXTVAL, 30002,5002,systimestamp,1,0, '恭喜你約會失敗');
+ INSERT INTO LETTER VALUES (LETTER_SEQ.NEXTVAL, 30003,5004,systimestamp,0,1, '恭喜你被申訴');
+ Insert Into Letter Values (Letter_Seq.Nextval, 30004,5003,Systimestamp,1,0, '恭喜你申訴成功了');
+ INSERT INTO LETTER VALUES (LETTER_SEQ.NEXTVAL, 30005,5005,systimestamp,0,1, '恭喜你被檢舉已經成功了');
+ 
+ 
+
+
+
+
+CREATE TABLE SUBMEM(
+ ACTSUBMEMNO              	NUMBER(10) ,
+ BESUBMEMNO                	NUMBER(10) ,
+ SUBSTATE                	NUMBER(1) NOT NULL,
+ Constraint Submem_Pk Primary Key(Actsubmemno,Besubmemno),
+Constraint Submem_Besub_Fk Foreign Key(Besubmemno) References MEMBER(MEMNO), 
+Constraint SUBMEM_ACTSUB_Fk Foreign Key(ACTSUBMEMNO) References MEMBER(MEMNO));
+
+
+ INSERT INTO SUBMEM VALUES (5016, 5002, 0);
+ INSERT INTO SUBMEM VALUES (5016, 5003, 0);
+ INSERT INTO SUBMEM VALUES (5017, 5004, 0);
+ INSERT INTO SUBMEM VALUES (5018, 5001, 0);
+ INSERT INTO SUBMEM VALUES (5019, 5005, 0);
+ INSERT INTO SUBMEM VALUES (5020, 5003, 0);
+ INSERT INTO SUBMEM VALUES (5021, 5002, 0);
+
+ 
+ 
+ Create Table Appreprec (
+ MEMNO              	NUMBER(10) ,
+ RECDATE                DATE ,
+ CONSTRAINT appreprec_pk PRIMARY KEY(memno,recdate),
+ CONSTRAINT appreprec_fk FOREIGN KEY(memno) REFERENCES MEMBER(MEMNO) );
+ 
+ INSERT INTO APPREPREC VALUES (5001, TO_DATE('2017-08-18','YYYY-MM-DD'));
+ INSERT INTO APPREPREC VALUES (5003, TO_DATE('2017-08-28','YYYY-MM-DD'));
+ INSERT INTO APPREPREC VALUES (5002, TO_DATE('2017-08-05','YYYY-MM-DD'));
+
+
+
+
+commit;
+

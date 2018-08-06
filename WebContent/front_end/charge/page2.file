@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="MS950"%>
+<%request.setCharacterEncoding("UTF-8");%>  
+<%response.setCharacterEncoding("UTF-8");%> 
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2 postion-left-group" >
+                <div class="frontend">
+                <img src="<%=request.getContextPath()%>/front_end/images/logo-sp.png" class="img-rounded img-bg try-color">
+                </div>
+                <div id="menu">
+                    <div class="panel list-group list-color">
+                        <a href="<%=request.getContextPath()%>/front_end/product/BrowseProduct.jsp" class="list-group-item ">商城首頁</a>
+                        <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm1" data-parent="#menu">瀏覽商品 
+                         <span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a>
+                        <div id="sm1" class="sublinks collapse">
+                            <a href="<%=request.getContextPath()%>/front_end/product/PetFoodType.jsp" class="list-group-item small" data-toggle="collapse" data-target="#sm11" data-parent="#sm1">寵物飼料
+                             </a>
+                            <div id="sm11" class="sublinks collapse">
+                                
+                            </div>
+                            <a href="<%=request.getContextPath()%>/front_end/product/PetGoodType.jsp" class="list-group-item small" data-toggle="collapse" data-target="#sm12" data-parent="#sm1">寵物用品
+                            </a>
+                            <div id="sm12" class="sublinks collapse">
+                                
+                            </div>
+                             <a href="<%=request.getContextPath()%>/front_end/product/PetToyType.jsp" class="list-group-item small" data-toggle="collapse" data-target="#sm13" data-parent="#sm1">寵物玩具
+                            </a>
+                            <div id="sm13" class="sublinks collapse">
+                                
+                            </div>
+                        </div>
+                        <a href="<%=request.getContextPath()%>/front_end/product/OrderView.jsp" class="list-group-item">我的訂單</a>
+                        <a href="<%=request.getContextPath()%>/front_end/charge/chargePage.jsp" class="list-group-item">儲值專區</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 ">
+                
+				
+				
+                
+                <div class="row">
+                    <br>

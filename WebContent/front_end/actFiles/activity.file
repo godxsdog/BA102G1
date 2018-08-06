@@ -1,0 +1,25 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<script>
+
+
+		
+		
+		
+		
+
+
+	$(function() {
+			
+	
+ 		$("#test").change(function(){
+			
+			if($("#test").val()=="0"||$("#test").val()=="1"){
+				$("#aKind").css("display","none");
+			}
+			else
+				$("#aKind").css("display","block");
+		});
+		
+		
+       });
+</script>

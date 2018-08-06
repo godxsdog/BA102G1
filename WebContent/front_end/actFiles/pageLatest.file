@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>					
+		
+		<%
+			int ShowNumPerPage = 5;//每一頁pagination的li會出現幾個
+			int pagePara = (whichPage-1)/ShowNumPerPage;//找出現在在第幾批1,6,11
+			int pageMax; //一頁要幾個數字頁，用於少於5頁或是最末頁
+			if(pageNumber>ShowNumPerPage){
+				if(ShowNumPerPage+ShowNumPerPage*pagePara>pageNumber){
+					pageMax=pageNumber-ShowNumPerPage*pagePara;
+				}else{
+					pageMax = ShowNumPerPage;
+				}
+			}else{
+				pageMax=pageNumber;
+			}
+			pageContext.setAttribute("pagePara",pagePara);
+			pageContext.setAttribute("whichPage",whichPage);
+			pageContext.setAttribute("ShowNumPerPage",ShowNumPerPage);
+			
+			
+		%>		
+				<div class="text-center">	
+					
+                    <ul class="pagination" >
+	                   	<li><a href="<%=request.getRequestURI()%>?whichPage=<%= (whichPage-ShowNumPerPage)<=0 ? 1:(whichPage-ShowNumPerPage)%>">&laquo;</a></li>
+	                   	<c:forEach var="i" begin="1" end="<%= pageMax%>" step="1">
+	                   	<c:if test="${whichPage%ShowNumPerPage!=i%ShowNumPerPage}" var="pageFocus" >
+	                   	<li><a href="<%=request.getRequestURI()%>?whichPage=${i+pagePara*ShowNumPerPage}">${i+pagePara*ShowNumPerPage}</a></li>
+	                   	</c:if>
+	                   	<c:if test="${!pageFocus}">
+	                   	<li class="active"><a href="<%=request.getRequestURI()%>?whichPage=${i+pagePara*ShowNumPerPage}">${i+pagePara*ShowNumPerPage}</a></li>
+	                   	</c:if>
+	                   	</c:forEach>
+	                   	
+	                   	<li><a href="<%=request.getRequestURI()%>?whichPage=<%=whichPage+ShowNumPerPage>=pageNumber? pageNumber:whichPage+ShowNumPerPage %>">&raquo;</a></li>
+                    </ul>
+                    <br>
+                    <ul class="pager">
+                        <li><a href="<%=request.getRequestURI()%>?whichPage=<%=(whichPage-1)<=0? 1:whichPage-1%>">前一頁</a></li>
+                        <li><a href="<%=request.getRequestURI()%>?whichPage=<%=(whichPage+1)>=pageNumber? pageNumber:whichPage+1%>">下一頁</a></li>
+                    </ul>
+                </div>     
+      

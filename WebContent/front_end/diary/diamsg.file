@@ -1,0 +1,154 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>
+
+					<div class="panel msg" > 						
+	                    <div class="panel-body">		                       
+								<!--  秀出留言區    -->                            		
+	                    <c:forEach var="diamsg" items="${diaMsgSvc.getAllMsgFromDia(diary.diaNo)}">
+	                        <div class="panel-body" style="margin-bottom:10px;padding:0px;">
+	                            <div class="col-sm-10" >
+	                            	<div class="row">
+	                            		<div class="col-sm-4">
+	                            			<img class="msgmemimg" src="<%=request.getContextPath()%>/front_end/member/MemImgReader2.do?memNo=${diamsg.getMemNo()}">
+	                            		</div>
+	                            		<div class="col-sm-8 col-sm-pull-3" >
+	                            			<a href="<%=request.getContextPath()%>/front_end/diary/personalDiary.jsp?memNo=${diamsg.getMemNo()}" style="color:#191970;font-weight:bold;">${memSvc.getOneMember(diamsg.memNo).getMemSname()} </a>	                            			
+	                            			<span>${diamsg.diaMsgText }</span>
+	                            			<div style="font-size:10px;color:#BC8F8F;"><fmt:formatDate value="${diamsg.diaMsgTime }" pattern="HH:mm:ss yyyy/MM/dd"/></div>
+	                            		</div>	                            		
+	                            	</div>
+	                            </div>	
+	                            <div class="col-sm-2" >
+	                              <div class="row ">       	
+	                            	<!-- 修改自己的留言區 -->						
+					                    <c:if test="${ diamsg.memNo==member.memNo}">											
+											<input type="hidden" value="${ diamsg.diaMsgNo }"> 
+											<input type="button" class="btn btn-info btn-xs" value="修改" onclick="updateMsg(this);" >
+											<input type="button" class="btn btn-danger btn-xs" value="刪除" onclick="deleteMsg(this);">
+					                    </c:if>
+					               </div>
+	                            </div>	     	                            				
+	                        </div>
+	                    </c:forEach>
+	                     	<!-- 新增留言區 -->
+	                       <c:if test="${ !empty member  }">
+	                       	 <div class="" style="margin-top:10px;margin-bottom:10px;">
+		                       	  <div class="col-sm-2 memImg" style="margin-right:5px;">
+	                      			<img class="memImg" src="<%=request.getContextPath()%>/front_end/member/MemImgReader2.do?memNo=${member.getMemNo()}">
+		                      	  </div>
+		                      	  <div class="col-sm-10 input-group" style="padding:0;">
+		                      		<input type="hidden" name="diano" value="${ diary.diaNo }"> 
+								   	<textarea class="form-control" style="resize:none;width:400px;height:34px;" name="diamsgtext" placeholder="Write a comment..." ></textarea>
+								   	<input class="btn btn-primary btn-sm" type="button" value="送出" style="height:34px;" onclick="insertMsg(this);">
+		                      	  </div>
+		                     </div>		                    
+		                   </c:if>
+	                    </div>                             
+                   </div>
+                   
+                   
+        <script type="text/javascript">
+			function insertMsg(e){
+				var diaNo = $(e).prev().prev().val();
+				var diaMsgText = $(e).prev().val();
+				if(diaMsgText.length!=0){
+					$.ajax({ 
+						url : "<%=request.getContextPath()%>/front_end/diary/diaMsg.do",
+						data : {
+							action : 'insert',
+							diamsgtext : diaMsgText,
+							diano : diaNo
+												            						
+						},
+						type : 'POST',
+						error : function(xhr) {
+							alert('Ajax request 發生錯誤');
+							},
+						success : function(data) {		
+							var obj = JSON.parse(data);//轉成json格式	
+							$('<div>').attr("class","panel-body").css("margin-bottom","10px").insertBefore($(e).parent().parent());
+							$('<div>').attr("class","col-sm-10").appendTo($(e).parent().parent().prev());
+							$('<div>').attr("class","row").appendTo($(e).parent().parent().prev().find('.col-sm-10'));
+							$('<div>').attr("class","col-sm-4").appendTo($(e).parent().parent().prev().find('.row'));
+							$('<img>').attr({"class":"msgmemimg","src":"<%=request.getContextPath()%>/front_end/member/MemImgReader2.do?memNo="+obj.memNo}).appendTo($(e).parent().parent().prev().find('.col-sm-4'));
+							$('<div>').attr("class","col-sm-8 col-sm-pull-3").appendTo($(e).parent().parent().prev().find('.row'));
+							$('<a>').attr("href","<%=request.getContextPath()%>/front_end/diary/personalDiary.jsp?memNo="+obj.memNo).css({"color":"#191970","font-weight":"bold"}).text(obj.sname).appendTo($(e).parent().parent().prev().find('.col-sm-pull-3'));
+							$('<span>').css("padding-left","4px").text(diaMsgText).appendTo($(e).parent().parent().prev().find('.col-sm-pull-3'));
+							$('<div>').css({"font-size":"10px","color":"#BC8F8F"}).text(obj.diaMsgTime).appendTo($(e).parent().parent().prev().find('.col-sm-pull-3'));
+							
+							$('<div>').attr("class","col-sm-2").appendTo($(e).parent().parent().prev());
+							$('<div>').attr("class","row").appendTo($(e).parent().parent().prev().find('.col-sm-2'));
+							$('<input>').attr({"type":"hidden","value":obj.curr}).appendTo($(e).parent().parent().prev().find('.col-sm-2 > .row'));
+							$('<input>').attr({"class":"btn btn-info btn-xs","type":"button","value":"修改","onclick":"updateMsg(this);"}).appendTo($(e).parent().parent().prev().find('.col-sm-2 > .row'));
+							$('<input>').css("margin-left","4px").attr({"class":"btn btn-danger btn-xs","type":"button","value":"刪除","onclick":"deleteMsg(this);"}).appendTo($(e).parent().parent().prev().find('.col-sm-2 > .row'));
+							
+							$(e).prev().val("");
+						}
+					});
+				}else{
+					alert("請輸入留言內文!!");
+				}
+			}											
+			function updateMsg(e){
+				if($(e).val()=="修改"){					
+					$('<textarea>').css({"resize":"none","width":"420px","height":"34px"}).text($(e).parent().parent().prev().children().children().next().find('span').text()).appendTo($(e).parent().parent().prev().children().children().next());									                	
+					$(e).parent().parent().prev().children().children().next().find('span').remove();
+					$(e).parent().parent().prev().children().children().next().find('a').hide();
+					$(e).parent().parent().prev().children().children().next().find('div').hide();
+					$(e).val('確定');
+					$(e).next().val('取消');
+				}else if($(e).val()=="確定"){
+											                			
+					$.ajax({ 
+						url : "<%=request.getContextPath()%>/front_end/diary/diaMsg.do",
+						data : {
+							action : 'update',
+							diamsgtext : $(e).parent().parent().prev().children().children().next().find('textarea').val(),
+							diamsgno : $(e).prev().val()
+												            						
+						},
+						type : 'POST',
+						error : function(xhr) {
+							alert('Ajax request 發生錯誤');
+							},
+						success : function(result) {			            						
+							var textarea = $(e).parent().parent().prev().children().children().next().find('textarea');
+							$(e).parent().parent().prev().children().children().next().find('a').show();
+							$(e).parent().parent().prev().children().children().next().find('div').show();
+							$('<span>').text(textarea.val()).insertAfter($(e).parent().parent().prev().children().children().next().find('a')); 										            						
+							textarea.remove();
+							}
+							});
+						$(e).val('修改');
+						$(e).next().val('刪除');
+							}	
+					}
+			function deleteMsg(e){
+				if($(e).val()=="刪除"){
+					$.ajax({ 
+						url : "<%=request.getContextPath()%>/front_end/diary/diaMsg.do",
+						data : {
+							action : 'delete',
+							diamsgno : $(e).prev().prev().val()	
+						},
+						type : 'POST',
+						error : function(xhr) {
+							alert('Ajax request 發生錯誤');
+						},
+						success : function(result) {
+							 $(e).parent().parent().parent().remove();
+										            						
+						}
+					});
+				}else if($(e).val()=="取消"){
+					var textarea = $(e).parent().parent().prev().children().children().next().find('textarea');
+					$(e).parent().parent().prev().children().children().next().find('a').show();
+					$(e).parent().parent().prev().children().children().next().find('div').show();
+					$('<span>').text(textarea.text()).insertAfter($(e).parent().parent().prev().children().children().next().find('a'));  										            						
+					textarea.remove();
+								            						
+					$(e).val('刪除');
+					$(e).prev().val("修改");
+				}
+			}
+										                	
+ 		</script>           

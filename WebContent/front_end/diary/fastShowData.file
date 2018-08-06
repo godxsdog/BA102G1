@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>		
+		
+	<script type="text/javascript">
+	
+							
+		CKEDITOR.replace( 'diatext', {height:100});
+								
+		function fastPic(){
+			$('#fastName').val("乖狗");
+			var text = "今天的樣子真的非常的可愛!!";
+			CKEDITOR.instances.fastText.setData(text);
+			
+		}
+		function fastVid(){
+			$('#fastName').val("可愛");	
+			var text = "今天的影片來為我的愛寵做個紀念!!";
+			CKEDITOR.instances.fastText.setData(text);
+		}
+		
+		function fastUpdate(){
+			$('#fastName').val("我是慈慈");
+			var text = "趕快來跟我的寵物約會吧^^ 網址:http://localhost:8081/BA102G1/front_end/dateitem/select_page.jsp";
+			CKEDITOR.instances.fastText.setData(text);	
+		}
+	</script>

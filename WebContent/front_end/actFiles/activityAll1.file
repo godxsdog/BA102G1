@@ -1,0 +1,222 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+
+
+			<c:forEach var="activityFront" items="${activityFrontList}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+				 <div class="panel panel-default">
+			       		<div class="panel-heading">
+			       		
+								
+									<h3 class="panel-title">
+									<% Activity act = (Activity) pageContext.getAttribute("activityFront"); %>   
+									<%
+									restMember = restMemberService.getOneRestMember(act.getRestMemId());
+									restaurant = restaurantService.getOneRest(restMember.getRestNo());
+									
+									%>
+									
+									活動餐廳:<%=restaurant.getRestName() %>
+									</h3>
+								
+
+							
+			      		 </div>
+			      
+					<div class="panel-body">
+				       <div class="col-xs-12 col-sm-4">
+							<img src="<%=request.getContextPath() %>/activity/DBGifReader5?actNo=${activityFront.actNo}" class="img-thumbnail" >
+						</div>
+					
+						
+						
+						<div class="col-xs-12 col-sm-8 ">
+							<textarea class="overflow form-control" rows="8" cols="40" style="resize:none;border:0px;background-color:white;font-size:20px;font-weight:bold;" readonly>${activityFront.actContent}</textarea>
+							
+						</div>
+					</div>
+				
+						
+					
+				<form method="post" action="<%=request.getContextPath()%>/actDetial/actDetialController" >
+					<div class="panel-footer">
+			       
+						
+							<div class="panel-body text-right" >
+			         			<a href='#${activityFront.actNo}' data-toggle="modal" class="btn btn-primary">活動詳情</a>
+									<div class="modal fade" id="${activityFront.actNo }">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+					</div>							
+						<div class="modal-header" style="background-color:white">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title text-center">活動詳情</h4>
+						</div>
+				
+					<div class="modal-body" style="background-color:white">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-3">
+									
+										<div class="form-group">
+												<div class="col-xs-12 col-sm-12">
+														<img src="<%=request.getContextPath()%>/activity/DBGifReader5?actNo=${activityFront.actNo}" 
+														id="actInitImg" height="200px" width="100%" class="img-circle">
+														
+													</div>
+												</div>
+								</div>
+								<div class="col-sm-6">		
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															活動名稱:
+														</label>
+														<div class="col-sm-9 text-left">
+															${activityFront.actName }	
+														</div>
+													</div>
+												</div>	
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															活動內容:
+														</label>
+														<div class="col-sm-9 text-left">
+															<textarea style="resize:none;border:0px;background-color:white;" rows="3" cols="40" readonly>${activityFront.actContent }</textarea>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															活動日期:
+														</label>
+														<div class="col-sm-9 text-left">
+															${activityFront.actDate}	
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															報名截止日期:
+														</label>
+														<div class="col-sm-9 text-left">
+															${activityFront.actFDate}	
+														</div>
+													</div>
+												</div>
+												<div class="row">		
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															人數上限:
+														</label>
+														<div class="col-sm-9 text-left">
+															${activityFront.actULimit }人	
+														</div>
+													</div>
+												</div>	
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															人數下限:
+														</label>
+														<div class="col-sm-9 text-left">
+															${activityFront.actLLimit }人
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															種類限制:
+														</label>
+														<div class="col-sm-9 text-left">
+																
+																<c:if test="${activityFront.actKind=='0'}">
+																	貓
+																</c:if>	
+																<c:if test="${activityFront.actKind=='1'}">
+																	狗
+																</c:if>
+																<c:if test="${activityFront.actKind=='2'}">
+																	其他
+																</c:if>
+															
+														</div>
+													</div>
+												</div>
+												<div class="row">
+												</div>
+										</div>
+									</div>
+								</div>
+							</div>			
+				<div class="modal-footer" style="background-color:white">
+					
+					
+					
+					
+					
+					<% 
+					        
+							
+							
+							boolean showAttend=true;
+								if(map!=null){
+									try{
+										if(map.get(act.getActNo())==null){
+											showAttend=true;
+										}
+										if(map.get(act.getActNo())==0){
+											showAttend=false;
+										}
+									}catch (Exception e){
+										showAttend=true;
+									}
+								}
+									
+					%>
+					<% if(showAttend){  %>
+					
+						<input type="hidden" name="memActStatus" value="0">
+						<input type="hidden" name="memNo" value="${member.memNo}">
+						<input type="hidden" name="actNo" value="${activityFront.actNo}">
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+						<input type="hidden" name="action" value="joinActivity">
+						<button type="submit" class="btn btn-primary">參加活動</button>
+					
+					<% } %>
+					
+					<% if(!showAttend){  %>
+					
+						<input type="hidden" name="memActStatus" value="1">
+						<input type="hidden" name="memNo" value="${member.memNo}">
+						<input type="hidden" name="actNo" value="${activityFront.actNo}">
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+						<input type="hidden" name="action" value="cancelActivity">
+						<button type="submit" class="btn btn-danger">取消活動</button>
+					
+					<% } %>
+					<button type="button" class="btn btn-warning" data-dismiss="modal">關閉</button>
+				</div>
+													
+			</div>
+		</div>
+	</div>
+						         			
+</div>
+				
+					
+			
+					
+					
+				</form>	
+				
+				
+					
+				</div>
+			     
+			</c:forEach>
+			
+			
+						

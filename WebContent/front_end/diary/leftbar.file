@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="BIG5"%>
+
+<jsp:useBean id="submSvc" scope="page" class="com.submem.model.SubMemService"/>
+
+
+<div class="container-fluid matchnav" >
+        <div class="row ">
+            <div class="col-xs-12 col-sm-2 postion-left-group" style="padding-top:40px;">
+            	<div class="frontend"><img src="<%=request.getContextPath()%>/front_end/images/logo-sp.png" class="img-rounded img-bg try-color"> </div>         
+                <div id="menu">
+                    <div class="panel list-group list-color">
+                        <a href="<%=request.getContextPath()%>/front_end/diary/diary.jsp" class="list-group-item">最新日誌首頁</a>
+                        <a href="<%=request.getContextPath()%>/front_end/diary/mydiary.jsp" class="list-group-item">我的日誌</a>
+                        
+                        <c:if test="${!empty member}">
+		                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm1" data-parent="#menu">追蹤中的                      
+		                         <span class="glyphicon glyphicon-triangle-bottom pull-right"></span></a>                         
+				                        <div id="sm1" class="sublinks collapse">  
+				                        	<c:forEach var="submem" items="${submSvc.getMemberAct(member.getMemNo())}">
+				                            	<a href="<%=request.getContextPath()%>/front_end/diary/personalDiary.jsp?memNo=${submem.beSubMemNo}" class="list-group-item small "> ${memSvc.getOneMember(submem.getBeSubMemNo()).getMemSname()}</a>
+				                       		</c:forEach>  	 
+				                        </div>
+						</c:if>
+                        <a href="<%=request.getContextPath()%>/front_end/diary/manageSubMem.jsp" class="list-group-item">管理我的追蹤</a>
+                    </div>
+                </div>
+            </div>
+
+

@@ -9,7 +9,7 @@ import java.util.List;
 import javax.naming.Context;
 import javax.sql.DataSource;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+//import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class RestImgDAO implements RestImgDAO_interface{
 	
